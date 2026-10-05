@@ -4,528 +4,568 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kairo — Personal Career Intelligence Engine</title>
-  <meta name="description" content="AI-powered evidence-backed career intelligence, dynamic project ranking, knowledge graph, and tailored resume generation with Claymorphic and Glassmorphic UX.">
+  <meta name="description" content="AI-powered evidence-backed career intelligence, dynamic project ranking, knowledge graph, developer intelligence, and tailored resume generation.">
   
-  <!-- Modern Google Fonts -->
+  <!-- Elite Editorial & Architectural Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- Ambient Floating Glow Orbs for Glassmorphism Reflection -->
-  <div class="ambient-glow glow-orb-1"></div>
-  <div class="ambient-glow glow-orb-2"></div>
-  <div class="ambient-glow glow-orb-3"></div>
+  <!-- Master App Layout: Collapsible Sidebar + Main Viewport -->
+  <div id="app-layout" class="app-layout">
 
-  <!-- Top Header Navigation -->
-  <header class="app-header">
-    <div class="brand-container">
-      <div class="brand-logo">K</div>
+    <!-- LEFT SCULPTED CLAY SIDEBAR RAIL -->
+    <aside id="sidebar-rail" class="clay-sidebar-rail">
       <div>
-        <span class="brand-title">KAIRO</span>
-        <span class="brand-tag">Career Intelligence v2.0</span>
-      </div>
-    </div>
+        <!-- Sidebar Collapse / Expand Toggle Button -->
+        <div class="sidebar-header-toggle">
+          <button id="btn-toggle-sidebar" class="clay-toggle-btn" title="Toggle Sidebar (Expand/Collapse)">
+            <span id="toggle-icon">◀</span>
+          </button>
+        </div>
 
-    <!-- Main Section Tabs -->
-    <nav class="nav-tabs" aria-label="Main Navigation">
-      <button class="nav-btn active" data-tab="tab-profile">
-        <span>👤</span> Career Profile
-      </button>
-      <button class="nav-btn" data-tab="tab-graph">
-        <span>🕸️</span> Knowledge Graph
-      </button>
-      <button class="nav-btn" data-tab="tab-matcher">
-        <span>🎯</span> JD Matcher & Ranking
-      </button>
-      <button class="nav-btn" data-tab="tab-resume">
-        <span>📄</span> Tailored Resume Studio
-      </button>
-      <button class="nav-btn" data-tab="tab-diagnostics">
-        <span>📊</span> ATS Diagnostics
-      </button>
-      <button class="nav-btn" data-tab="tab-growth">
-        <span>📈</span> Growth & Roadmap
-      </button>
-    </nav>
-
-    <div class="header-actions">
-      <div class="badge-mode">
-        <div class="pulse-dot"></div>
-        <span>Intelligence Online</span>
-      </div>
-    </div>
-  </header>
-
-  <!-- Main Application Container -->
-  <main class="main-content">
-
-    <!-- TAB 1: CAREER PROFILE & FOOTPRINT HUB -->
-    <section id="tab-profile" class="tab-view active">
-      <div class="view-hero">
-        <h1>Unified Career Profile & Footprint Hub</h1>
-        <p>A persistent, structured career representation backed by verifiable GitHub code, Kaggle Master achievements, and technical evidence.</p>
-      </div>
-
-      <div class="grid-1-2">
-        <!-- Profile Identity & Ingestion Connectors Card -->
-        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-          <div class="kairo-card">
-            <div class="card-header">
-              <h3>Candidate Identity</h3>
-              <button id="btn-sync-github" class="btn btn-secondary btn-sm">⚡ Sync GitHub</button>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 0.85rem;">
-              <div>
-                <h2 id="profile-name" style="font-size: 1.45rem; color: #fff;">Alex Chen</h2>
-                <div id="profile-headline" style="color: var(--accent-cyan); font-weight: 600; font-size: 0.95rem; margin-top: 2px;">Full-Stack AI & ML Engineer</div>
-              </div>
-              <p id="profile-summary" style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;"></p>
-              <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.85rem; font-size: 0.85rem; display: flex; flex-direction: column; gap: 0.45rem;">
-                <div>📧 <span id="profile-email" style="color:#cbd5e1;"></span></div>
-                <div>🐙 <span id="profile-github" style="color:#cbd5e1;"></span></div>
-                <div>🌐 <span id="profile-portfolio" style="color:#cbd5e1;"></span></div>
-              </div>
-            </div>
+        <!-- Profile Avatar & Identity -->
+        <div class="sidebar-profile-card">
+          <div class="avatar-container">
+            <div class="avatar-inner">AC</div>
           </div>
+          <div class="sidebar-name">Alex Chen</div>
+          <div class="sidebar-role">AI & ML Engineer</div>
+        </div>
 
-          <!-- Phase 2: Kaggle Footprint Connector Card -->
-          <div class="kairo-card">
-            <div class="card-header">
-              <h3>Kaggle Footprint</h3>
-              <span id="kaggle-tier-badge" class="badge-evidence badge-kaggle-master">KAGGLE MASTER</span>
-            </div>
-            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.85rem;">
-              Verified profile: <strong style="color:#fff;" id="kaggle-username">@alexchen_ml</strong> (Rank #412)
-            </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem;">
-              <div class="skill-pill" style="justify-content: space-between;">
-                <span>🥇 Gold Medals:</span> <strong>1</strong>
-              </div>
-              <div class="skill-pill" style="justify-content: space-between;">
-                <span>🥈 Silver Medals:</span> <strong>2</strong>
-              </div>
-            </div>
-            <button id="btn-sync-kaggle" class="btn btn-secondary btn-sm" style="width: 100%;">
-              ⚡ Re-Sync Kaggle ML Evidence
-            </button>
+        <!-- Tactile 3D Navigation with Tooltips for Collapsed Mode -->
+        <nav class="sidebar-nav" aria-label="Main Navigation">
+          <button class="nav-item-btn active" data-tab="tab-profile" data-tooltip="01 Dashboard & Profile">
+            <span class="nav-num">01</span>
+            <span class="nav-label">Dashboard & Profile</span>
+          </button>
+          <button class="nav-item-btn" data-tab="tab-devintel" data-tooltip="02 Developer Intel">
+            <span class="nav-num">02</span>
+            <span class="nav-label">Developer Intel</span>
+          </button>
+          <button class="nav-item-btn" data-tab="tab-graph" data-tooltip="03 Knowledge Graph">
+            <span class="nav-num">03</span>
+            <span class="nav-label">Knowledge Graph</span>
+          </button>
+          <button class="nav-item-btn" data-tab="tab-matcher" data-tooltip="04 Opportunity Matcher">
+            <span class="nav-num">04</span>
+            <span class="nav-label">Opportunity Matcher</span>
+          </button>
+          <button class="nav-item-btn" data-tab="tab-resume" data-tooltip="05 Resume Studio">
+            <span class="nav-num">05</span>
+            <span class="nav-label">Resume Studio</span>
+          </button>
+          <button class="nav-item-btn" data-tab="tab-diagnostics" data-tooltip="06 ATS Audit">
+            <span class="nav-num">06</span>
+            <span class="nav-label">ATS Audit</span>
+          </button>
+          <button class="nav-item-btn" data-tab="tab-growth" data-tooltip="07 Growth Velocity">
+            <span class="nav-num">07</span>
+            <span class="nav-label">Growth Velocity</span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Telemetry Status Footer -->
+      <div class="sidebar-footer">
+        <div class="badge-status-telemetry">
+          <span class="telemetry-text">KAIRO ENGINE // ONLINE</span>
+          <div class="status-indicator-dot"></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- RIGHT MAIN CONTENT VIEWPORT -->
+    <main class="main-viewport">
+
+      <!-- Top App Bar -->
+      <header class="top-bar">
+        <div class="top-bar-title">
+          <h1 id="view-title">Executive Career Intelligence</h1>
+          <p>Continuous evidence-backed professional profile & dynamic opportunity reasoning</p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div class="top-search-capsule">
+            <input type="text" placeholder="Search competencies, repositories, JDs...">
+          </div>
+          <button id="btn-sync-github" class="clay-btn clay-btn-dark clay-btn-sm">Sync GitHub</button>
+        </div>
+      </header>
+
+      <!-- TAB 1: DASHBOARD & CAREER PROFILE -->
+      <section id="tab-profile" class="tab-view active">
+        <!-- Tactile Hero Greeting Banner -->
+        <div class="clay-hero-banner" style="margin-bottom: 1.5rem;">
+          <div>
+            <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent-gold); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.35rem;">Candidate Intelligence Dossier</div>
+            <div class="hero-large-heading">Alex Chen, Machine Learning Systems</div>
+            <p class="hero-subtext" id="profile-summary"></p>
+          </div>
+          <div style="text-align: right; display: flex; flex-direction: column; gap: 0.6rem; align-items: flex-end;">
+            <span class="badge-clay badge-clay-gold">KAGGLE MASTER // GLOBAL #412</span>
+            <button id="btn-sync-kaggle" class="clay-btn clay-btn-gold clay-btn-sm">Re-Verify Kaggle ML Data</button>
           </div>
         </div>
 
-        <!-- Skills & Grounded Projects -->
-        <div style="display: flex; flex-direction: column; gap: 1.75rem;">
-          <div class="kairo-card">
-            <div class="card-header">
+        <div class="grid-2col">
+          <!-- Evidence Grounded Skills -->
+          <div class="clay-card">
+            <div class="card-header-styled">
               <h3>Evidence-Grounded Skills</h3>
               <div style="display: flex; gap: 0.5rem;">
-                <span class="badge-evidence badge-verified">VERIFIED (12)</span>
-                <span class="badge-evidence badge-supported">SUPPORTED (3)</span>
+                <span class="badge-clay badge-clay-verified">VERIFIED (14)</span>
+                <span class="badge-clay badge-clay-supported">SUPPORTED (2)</span>
               </div>
             </div>
             <div id="profile-skills-list" class="skills-cloud"></div>
           </div>
 
-          <div class="kairo-card">
-            <div class="card-header">
-              <h3>Connected Projects & Footprint</h3>
+          <!-- Connected Projects & Repositories -->
+          <div class="clay-card">
+            <div class="card-header-styled">
+              <h3>Authenticated Production Projects</h3>
             </div>
             <div id="profile-projects-list" class="project-list"></div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- TAB 2: CAREER KNOWLEDGE GRAPH (PHASE 2) -->
-    <section id="tab-graph" class="tab-view">
-      <div class="view-hero">
-        <h1>Career Knowledge Graph Visualizer</h1>
-        <p>Multi-relational graph connecting candidate identity, verified skills, production projects, and platform evidence.</p>
-      </div>
+      <!-- TAB 2: DEVELOPER INTELLIGENCE (PHASE 3) -->
+      <section id="tab-devintel" class="tab-view">
+        <div class="grid-2col" style="margin-bottom: 1.5rem;">
+          <!-- Algorithmic Rigor (LeetCode & Codeforces) -->
+          <div class="clay-card">
+            <div class="card-header-styled">
+              <h3>Algorithmic Rigor & Competitive Problem Solving</h3>
+              <span class="badge-clay badge-clay-verified">GUARDIAN (TOP 1.2%)</span>
+            </div>
+            <div style="font-size: 0.82rem; font-family: var(--font-mono); color: var(--text-secondary); margin-bottom: 1rem;">
+              LEETCODE @alexchen_dev (RATING: 2,145) • CODEFORCES: Candidate Master (1,912)
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1.25rem;">
+              <div class="skill-pill" style="flex-direction: column; align-items: flex-start;">
+                <span style="font-size:0.7rem; color:var(--text-muted);">EASY</span>
+                <strong style="font-size:1.1rem; color:#86efac;">160</strong>
+              </div>
+              <div class="skill-pill" style="flex-direction: column; align-items: flex-start;">
+                <span style="font-size:0.7rem; color:var(--text-muted);">MEDIUM</span>
+                <strong style="font-size:1.1rem; color:#fde68a;">280</strong>
+              </div>
+              <div class="skill-pill" style="flex-direction: column; align-items: flex-start;">
+                <span style="font-size:0.7rem; color:var(--text-muted);">HARD</span>
+                <strong style="font-size:1.1rem; color:#fda4af;">80</strong>
+              </div>
+            </div>
 
-      <div class="grid-2col">
-        <div class="kairo-card" style="grid-column: 1 / -1;">
-          <div class="card-header">
-            <h3>Knowledge Graph Interactive Canvas</h3>
-            <div style="display: flex; gap: 0.75rem; font-size: 0.8rem;">
-              <span class="badge-evidence badge-verified">Skill Depth: 94.2%</span>
-              <span class="badge-evidence badge-supported">Entities: 18</span>
-              <span class="badge-evidence badge-inferred">Relations: 26</span>
+            <div style="font-size: 0.78rem; font-family: var(--font-mono); color: var(--text-secondary); margin-bottom: 0.45rem; text-transform: uppercase;">Top Solved Topics:</div>
+            <div class="skills-cloud">
+              <span class="skill-pill">Dynamic Programming: <strong>78</strong></span>
+              <span class="skill-pill">Graph Algorithms & Trees: <strong>94</strong></span>
+              <span class="skill-pill">Heaps & Tries: <strong>86</strong></span>
             </div>
           </div>
 
-          <!-- Interactive Node Canvas -->
-          <div id="graph-canvas" class="graph-canvas-container">
-            <!-- Dynamically populated floating interactive nodes -->
-          </div>
-
-          <div style="display: flex; gap: 1.5rem; justify-content: center; margin-top: 1.25rem; font-size: 0.8rem; color: var(--text-secondary);">
-            <div style="display:flex; align-items:center; gap: 6px;"><div style="width:12px; height:12px; border-radius:50%; background:#6366f1;"></div> Candidate</div>
-            <div style="display:flex; align-items:center; gap: 6px;"><div style="width:12px; height:12px; border-radius:50%; background:#0f766e;"></div> Verified Skills</div>
-            <div style="display:flex; align-items:center; gap: 6px;"><div style="width:12px; height:12px; border-radius:50%; background:#1e3a8a;"></div> Production Projects</div>
-            <div style="display:flex; align-items:center; gap: 6px;"><div style="width:12px; height:12px; border-radius:50%; background:#78350f;"></div> GitHub / Kaggle Evidence</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB 3: JD MATCHER & PROJECT RANKING -->
-    <section id="tab-matcher" class="tab-view">
-      <div class="view-hero">
-        <h1>Job Description Intelligence & Project Ranking</h1>
-        <p>Ingest target job requirements, compute multi-dimensional skill alignment, and rank projects dynamically.</p>
-      </div>
-
-      <div class="grid-2col">
-        <!-- Target JD Ingestion Form -->
-        <div class="kairo-card">
-          <div class="card-header">
-            <h3>Target Opportunity</h3>
-            <span class="badge-evidence badge-supported">Requirement Extractor</span>
-          </div>
-          
-          <div class="form-group">
-            <label class="form-label" for="preset-jd-select">Select Sample Preset Opportunity:</label>
-            <select id="preset-jd-select"></select>
-          </div>
-
-          <div class="grid-2col" style="gap: 1rem; margin-bottom: 1.15rem;">
-            <div>
-              <label class="form-label" for="jd-title-input">Role Title</label>
-              <input type="text" id="jd-title-input" class="form-control" value="Machine Learning Engineer">
-            </div>
-            <div>
-              <label class="form-label" for="jd-company-input">Target Company</label>
-              <input type="text" id="jd-company-input" class="form-control" value="Nexus AI Labs">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="jd-text-input">Job Description Text / Requirements</label>
-            <textarea id="jd-text-input" rows="8"></textarea>
-          </div>
-
-          <button id="btn-analyze-jd" class="btn btn-primary" style="width: 100%;">
-            ⚡ Re-Compute Alignment & Rank Projects
-          </button>
-        </div>
-
-        <!-- Computed Match & Project Ranking Results -->
-        <div style="display: flex; flex-direction: column; gap: 1.75rem;">
-          <div class="kairo-card">
-            <div class="card-header">
-              <h3>Match Alignment & Trust Score</h3>
-              <div style="display: flex; gap: 1rem;">
-                <div style="text-align: right;">
-                  <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 600;">JD Match</div>
-                  <div id="overall-match-score" style="font-size: 1.5rem; font-weight: 800; color: #38bdf8;">--</div>
+          <!-- Open-Source AI Models (Hugging Face & Cloud Certs) -->
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div class="clay-card">
+              <div class="card-header-styled">
+                <h3>Open-Source AI Models (Hugging Face)</h3>
+                <span class="badge-clay badge-clay-gold">24,500+ DOWNLOADS</span>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <div class="project-rank-item" style="padding: 1rem;">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.25rem;">
+                    <strong style="font-size:0.9rem;">alexchen-ai/bge-reranker-hybrid-financial</strong>
+                    <span class="badge-clay badge-clay-verified">18.2k dl</span>
+                  </div>
+                  <p style="font-size:0.8rem; color:var(--text-secondary);">Cross-encoder reranker fine-tuned for dense financial & legal document retrieval.</p>
                 </div>
-                <div style="text-align: right;">
-                  <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 600;">Evidence Trust</div>
-                  <div id="evidence-confidence-score" style="font-size: 1.5rem; font-weight: 800; color: #34d399;">--</div>
+                <div class="project-rank-item" style="padding: 1rem;">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.25rem;">
+                    <strong style="font-size:0.9rem;">alexchen-ai/rag-guardrail-llama3-8b</strong>
+                    <span class="badge-clay badge-clay-verified">6.3k dl</span>
+                  </div>
+                  <p style="font-size:0.8rem; color:var(--text-secondary);">Safety guardrail and citation verification fine-tune on LLaMA-3.</p>
                 </div>
               </div>
             </div>
 
-            <div style="margin-bottom: 1.15rem;">
-              <div style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.5rem;">Directly Verified Skills:</div>
-              <div id="strong-matches-container" class="skills-cloud"></div>
+            <div class="clay-card">
+              <div class="card-header-styled">
+                <h3>Verified Cloud Credentials</h3>
+                <span class="badge-clay badge-clay-verified">ACCREDITED</span>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:0.6rem; font-size:0.85rem;">
+                <div class="skill-pill" style="justify-content:space-between;">
+                  <span>AWS Certified Solutions Architect – Associate</span>
+                  <strong style="font-family:var(--font-mono); color:var(--accent-gold-light);">AWS-SAA-83921049</strong>
+                </div>
+                <div class="skill-pill" style="justify-content:space-between;">
+                  <span>DeepLearning.AI Machine Learning Specialization</span>
+                  <strong style="font-family:var(--font-mono); color:var(--accent-gold-light);">DLAI-TF-991204</strong>
+                </div>
+              </div>
             </div>
-
-            <div style="margin-bottom: 1.15rem;">
-              <div style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.5rem;">Supported Skills:</div>
-              <div id="partial-matches-container" class="skills-cloud"></div>
-            </div>
-
-            <div>
-              <div style="font-size: 0.82rem; font-weight: 600; color: #fb7185; margin-bottom: 0.5rem;">Identified Competency Gaps:</div>
-              <div id="skill-gaps-container" class="skills-cloud"></div>
-            </div>
-          </div>
-
-          <div class="kairo-card">
-            <div class="card-header">
-              <h3>Dynamically Ranked Candidate Projects</h3>
-            </div>
-            <div id="ranked-projects-list" class="project-list"></div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- TAB 4: TAILORED RESUME STUDIO -->
-    <section id="tab-resume" class="tab-view">
-      <div class="view-hero">
-        <h1>Personalized Resume Studio & Constraints</h1>
-        <p>Apply exact user constraints and generate an evidence-grounded, 1-page ATS-ready resume.</p>
-      </div>
-
-      <div class="grid-1-2">
-        <!-- Constraint Controls -->
-        <div class="kairo-card" style="height: fit-content;">
-          <div class="card-header">
-            <h3>Resume Constraints</h3>
-            <span class="badge-evidence badge-verified">Rules Applied</span>
+      <!-- TAB 3: KNOWLEDGE GRAPH TOPOLOGY -->
+      <section id="tab-graph" class="tab-view">
+        <div class="clay-card" style="margin-bottom: 1.5rem;">
+          <div class="card-header-styled">
+            <h3>Knowledge Graph Architecture</h3>
+            <div style="display: flex; gap: 0.75rem;">
+              <span class="badge-clay badge-clay-verified">SKILL DEPTH: 94.2%</span>
+              <span class="badge-clay badge-clay-supported">ENTITIES: 18</span>
+              <span class="badge-clay badge-clay-inferred">RELATIONS: 26</span>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label class="form-checkbox-label">
-              <input type="checkbox" id="constraint-one-page" checked>
-              <span>Strict 1-Page Constraint (Top 2 Projects)</span>
-            </label>
-          </div>
+          <div id="graph-canvas" class="graph-canvas-container"></div>
 
-          <div class="form-group">
-            <label class="form-checkbox-label">
-              <input type="checkbox" id="constraint-must-rag" checked>
-              <span>Must Include: RAG Research Assistant</span>
-            </label>
+          <div style="display: flex; gap: 2.5rem; justify-content: center; margin-top: 1.25rem; font-size: 0.76rem; font-family: var(--font-mono); color: var(--text-secondary); text-transform: uppercase;">
+            <div style="display:flex; align-items:center; gap: 8px;"><div style="width:10px; height:10px; border-radius:3px; background:var(--accent-gold);"></div> Candidate Node</div>
+            <div style="display:flex; align-items:center; gap: 8px;"><div style="width:10px; height:10px; border-radius:3px; background:#34d399;"></div> Verified Skill</div>
+            <div style="display:flex; align-items:center; gap: 8px;"><div style="width:10px; height:10px; border-radius:3px; background:#60a5fa;"></div> Production Project</div>
+            <div style="display:flex; align-items:center; gap: 8px;"><div style="width:10px; height:10px; border-radius:3px; background:#fbbf24;"></div> Platform Footprint</div>
           </div>
+        </div>
+      </section>
 
-          <div class="form-group">
-            <label class="form-checkbox-label">
-              <input type="checkbox" id="constraint-focus-ml" checked>
-              <span>Focus Heavily on Machine Learning & AI</span>
-            </label>
-          </div>
+      <!-- TAB 4: OPPORTUNITY MATCHER -->
+      <section id="tab-matcher" class="tab-view">
+        <div class="grid-2col">
+          <!-- JD Input Card -->
+          <div class="clay-card">
+            <div class="card-header-styled">
+              <h3>Target Job Description</h3>
+              <span class="badge-clay badge-clay-supported">Requirement Ingestion</span>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="preset-jd-select">Select Target Role Benchmark:</label>
+              <select id="preset-jd-select"></select>
+            </div>
 
-          <div class="form-group">
-            <label class="form-checkbox-label">
-              <input type="checkbox" id="constraint-exclude-cp">
-              <span>Exclude Competitive Programming</span>
-            </label>
-          </div>
+            <div class="grid-2col" style="gap: 1rem; margin-bottom: 1rem;">
+              <div>
+                <label class="form-label" for="jd-title-input">Role Title</label>
+                <input type="text" id="jd-title-input" class="form-control" value="Machine Learning Engineer">
+              </div>
+              <div>
+                <label class="form-label" for="jd-company-input">Target Enterprise</label>
+                <input type="text" id="jd-company-input" class="form-control" value="Nexus AI Labs">
+              </div>
+            </div>
 
-          <div style="margin-top: 1.75rem; display: flex; flex-direction: column; gap: 0.75rem;">
-            <button id="btn-export-resume" class="btn btn-primary" style="width: 100%;">
-              🖨️ Export / Print ATS Resume (PDF)
+            <div class="form-group">
+              <label class="form-label" for="jd-text-input">Job Requirements & Technical Context</label>
+              <textarea id="jd-text-input" rows="8"></textarea>
+            </div>
+
+            <button id="btn-analyze-jd" class="clay-btn clay-btn-gold" style="width: 100%;">
+              Re-Calculate Alignment & Rank Projects
             </button>
           </div>
-        </div>
 
-        <!-- Rendered Resume Preview -->
-        <div>
-          <div id="resume-paper-content" class="resume-paper"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB 5: ATS & DIAGNOSTICS -->
-    <section id="tab-diagnostics" class="tab-view">
-      <div class="view-hero">
-        <h1>Resume Readiness & ATS Intelligence</h1>
-        <p>Transparent evaluation across 6 measurable dimensions without vanity scoring.</p>
-      </div>
-
-      <div class="grid-2col">
-        <!-- 6-Dimension Score Cards -->
-        <div class="kairo-card">
-          <div class="card-header">
-            <h3>Diagnostic Breakdown</h3>
-            <span class="badge-evidence badge-verified">95.4% Readiness</span>
-          </div>
-
-          <div class="metric-row">
-            <div class="metric-header">
-              <span>JD Alignment</span>
-              <strong id="diag-alignment-val">93%</strong>
-            </div>
-            <div class="metric-bar-bg"><div id="diag-alignment-bar" class="metric-bar-fill"></div></div>
-          </div>
-
-          <div class="metric-row">
-            <div class="metric-header">
-              <span>Keyword & Concept Coverage</span>
-              <strong id="diag-keyword-val">90%</strong>
-            </div>
-            <div class="metric-bar-bg"><div id="diag-keyword-bar" class="metric-bar-fill"></div></div>
-          </div>
-
-          <div class="metric-row">
-            <div class="metric-header">
-              <span>Experience Relevance</span>
-              <strong id="diag-experience-val">94%</strong>
-            </div>
-            <div class="metric-bar-bg"><div id="diag-experience-bar" class="metric-bar-fill"></div></div>
-          </div>
-
-          <div class="metric-row">
-            <div class="metric-header">
-              <span>Project Relevance Score</span>
-              <strong id="diag-project-val">96%</strong>
-            </div>
-            <div class="metric-bar-bg"><div id="diag-project-bar" class="metric-bar-fill"></div></div>
-          </div>
-
-          <div class="metric-row">
-            <div class="metric-header">
-              <span>Evidence Confidence & Grounding</span>
-              <strong id="diag-evidence-val">98%</strong>
-            </div>
-            <div class="metric-bar-bg"><div id="diag-evidence-bar" class="metric-bar-fill metric-bar-emerald"></div></div>
-          </div>
-
-          <div class="metric-row">
-            <div class="metric-header">
-              <span>Structure & 1-Page Quality</span>
-              <strong id="diag-structure-val">99%</strong>
-            </div>
-            <div class="metric-bar-bg"><div id="diag-structure-bar" class="metric-bar-fill metric-bar-emerald"></div></div>
-          </div>
-        </div>
-
-        <!-- Actionable Alerts & Grounding Trace -->
-        <div class="kairo-card">
-          <div class="card-header">
-            <h3>Actionable Grounding Analysis</h3>
-          </div>
-
-          <div class="alert-box alert-success">
-            <span style="font-size:1.1rem;">✓</span>
-            <div><strong>Zero Hallucinations:</strong> All 2 included projects trace directly to live GitHub repositories and Kaggle Master notebooks.</div>
-          </div>
-
-          <div class="alert-box alert-success">
-            <span style="font-size:1.1rem;">✓</span>
-            <div><strong>Quantified Impact:</strong> 100% of selected bullet points contain measurable metrics (e.g. 34% NDCG gain, 180ms p95 latency).</div>
-          </div>
-
-          <div class="alert-box alert-warning">
-            <span style="font-size:1.1rem;">⚠️</span>
-            <div><strong>Cloud / Infrastructure Note:</strong> AWS & Docker are supported via resume history; linking a Dockerized repo would elevate evidence rating to 100% VERIFIED.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB 6: CAREER GROWTH & UPSKILLING ROADMAP (PHASE 2) -->
-    <section id="tab-growth" class="tab-view">
-      <div class="view-hero">
-        <h1>Historical Growth Velocity & Upskilling Roadmap</h1>
-        <p>Measure skill acquisition rate, compare snapshots, and generate actionable target role roadmaps.</p>
-      </div>
-
-      <div class="grid-2col">
-        <!-- Historical Snapshot Comparison -->
-        <div class="kairo-card">
-          <div class="card-header">
-            <h3>Historical Snapshot Comparison</h3>
-            <span class="badge-evidence badge-verified">Jan vs Oct 2026</span>
-          </div>
-
-          <table style="width:100%; border-collapse: collapse; font-size: 0.9rem; text-align: left;">
-            <thead>
-              <tr style="border-bottom: 1px solid rgba(255,255,255,0.08); color: var(--text-secondary);">
-                <th style="padding: 0.75rem 0;">Dimension</th>
-                <th>Jan 2026</th>
-                <th>Oct 2026</th>
-                <th>Velocity</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
-                <td style="padding: 0.75rem 0;">Verified Technical Skills</td>
-                <td>7</td>
-                <td><strong>15</strong></td>
-                <td style="color: #34d399; font-weight:700;">+114%</td>
-              </tr>
-              <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
-                <td style="padding: 0.75rem 0;">GitHub Active Repos</td>
-                <td>7</td>
-                <td><strong>18</strong></td>
-                <td style="color: #34d399; font-weight:700;">+157%</td>
-              </tr>
-              <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
-                <td style="padding: 0.75rem 0;">Kaggle Notebooks</td>
-                <td>10</td>
-                <td><strong>34</strong></td>
-                <td style="color: #34d399; font-weight:700;">+240%</td>
-              </tr>
-              <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
-                <td style="padding: 0.75rem 0;">Production AI/ML Projects</td>
-                <td>1</td>
-                <td><strong>5</strong></td>
-                <td style="color: #34d399; font-weight:700;">+400%</td>
-              </tr>
-              <tr>
-                <td style="padding: 0.75rem 0;">LeetCode / CP Solved</td>
-                <td>180</td>
-                <td><strong>520</strong></td>
-                <td style="color: #34d399; font-weight:700;">+188%</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Role Readiness Trajectory & Upskilling Recommendation -->
-        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-          <div class="kairo-card">
-            <div class="card-header">
-              <h3>Target Role Readiness Trajectory</h3>
-            </div>
-
-            <div style="display: flex; flex-direction: column; gap: 1rem;">
-              <div>
-                <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom: 0.35rem;">
-                  <span>Machine Learning Engineer</span>
-                  <strong style="color:#38bdf8;">91% (Ready)</strong>
+          <!-- Matching Diagnostics & Dynamic Project Ranking -->
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div class="clay-card">
+              <div class="card-header-styled">
+                <h3>Alignment & Confidence Breakdown</h3>
+                <div style="display: flex; gap: 1.25rem;">
+                  <div style="text-align: right;">
+                    <div style="font-size: 0.72rem; font-family: var(--font-mono); color: var(--text-secondary);">JD MATCH</div>
+                    <div id="overall-match-score" style="font-size: 1.45rem; font-weight: 800; color: #fff;">--</div>
+                  </div>
+                  <div style="text-align: right;">
+                    <div style="font-size: 0.72rem; font-family: var(--font-mono); color: var(--text-secondary);">EVIDENCE TRUST</div>
+                    <div id="evidence-confidence-score" style="font-size: 1.45rem; font-weight: 800; color: var(--accent-gold-light);">--</div>
+                  </div>
                 </div>
-                <div class="metric-bar-bg"><div class="metric-bar-fill" style="width: 91%;"></div></div>
               </div>
-              <div>
-                <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom: 0.35rem;">
-                  <span>AI Engineer (RAG & Agentic Systems)</span>
-                  <strong style="color:#34d399;">88% (Ready)</strong>
-                </div>
-                <div class="metric-bar-bg"><div class="metric-bar-fill metric-bar-emerald" style="width: 88%;"></div></div>
+
+              <div style="margin-bottom: 1rem;">
+                <div style="font-size: 0.76rem; font-family: var(--font-mono); color: var(--text-secondary); margin-bottom: 0.45rem; text-transform: uppercase;">Directly Verified Skills:</div>
+                <div id="strong-matches-container" class="skills-cloud"></div>
               </div>
-              <div>
-                <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom: 0.35rem;">
-                  <span>Full Stack AI Engineer</span>
-                  <strong style="color:#fbbf24;">84% (Strong)</strong>
-                </div>
-                <div class="metric-bar-bg"><div class="metric-bar-fill" style="width: 84%; background: linear-gradient(90deg, #f59e0b, #fbbf24);"></div></div>
+
+              <div style="margin-bottom: 1rem;">
+                <div style="font-size: 0.76rem; font-family: var(--font-mono); color: var(--text-secondary); margin-bottom: 0.45rem; text-transform: uppercase;">Supported Skills:</div>
+                <div id="partial-matches-container" class="skills-cloud"></div>
               </div>
+
               <div>
-                <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom: 0.35rem;">
-                  <span>Data Engineer</span>
-                  <strong style="color:#a5b4fc;">76% (Moderate)</strong>
-                </div>
-                <div class="metric-bar-bg"><div class="metric-bar-fill" style="width: 76%;"></div></div>
+                <div style="font-size: 0.76rem; font-family: var(--font-mono); color: #f87171; margin-bottom: 0.45rem; text-transform: uppercase;">Identified Gaps:</div>
+                <div id="skill-gaps-container" class="skills-cloud"></div>
               </div>
             </div>
-          </div>
 
-          <!-- Phase 2 Upskilling Roadmap -->
-          <div class="kairo-card">
-            <div class="card-header">
-              <h3>Actionable Upskilling Recommendations</h3>
-              <span class="badge-evidence badge-verified">Next Milestones</span>
-            </div>
-
-            <div class="upskill-item">
-              <div style="display:flex; justify-content:space-between; font-weight:700; margin-bottom:0.25rem;">
-                <span>Containerized Microservices & CI/CD</span>
-                <span class="badge-evidence badge-supported">Docker + GitHub Actions</span>
+            <div class="clay-card">
+              <div class="card-header-styled">
+                <h3>Dynamically Ranked Candidate Projects</h3>
               </div>
-              <p style="font-size:0.82rem; color:var(--text-secondary);">Add automated Docker Compose health checks and CI unit tests to elevate ML Engineer score to 96%.</p>
-            </div>
-
-            <div class="upskill-item">
-              <div style="display:flex; justify-content:space-between; font-weight:700; margin-bottom:0.25rem;">
-                <span>Continuous LLM Grounding & Evals</span>
-                <span class="badge-evidence badge-verified">MLOps Benchmark</span>
-              </div>
-              <p style="font-size:0.82rem; color:var(--text-secondary);">Integrate automated citation verification suites on Kaggle or GitHub to prove enterprise reliability.</p>
+              <div id="ranked-projects-list" class="project-list"></div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-  </main>
+      <!-- TAB 5: TAILORED RESUME STUDIO -->
+      <section id="tab-resume" class="tab-view">
+        <div class="grid-2col" style="grid-template-columns: 360px 1fr;">
+          <!-- Constraints Control Card -->
+          <div class="clay-card" style="height: fit-content;">
+            <div class="card-header-styled">
+              <h3>Constraint Controls</h3>
+              <span class="badge-clay badge-clay-verified">Rules Applied</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-checkbox-label">
+                <input type="checkbox" id="constraint-one-page" checked>
+                <span>Strict 1-Page Layout (Top 2 Projects)</span>
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label class="form-checkbox-label">
+                <input type="checkbox" id="constraint-must-rag" checked>
+                <span>Prioritize: RAG Research Assistant</span>
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label class="form-checkbox-label">
+                <input type="checkbox" id="constraint-focus-ml" checked>
+                <span>Emphasize Machine Learning Architecture</span>
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label class="form-checkbox-label">
+                <input type="checkbox" id="constraint-exclude-cp">
+                <span>Exclude Competitive Programming Section</span>
+              </label>
+            </div>
+
+            <div style="margin-top: 1.75rem; display: flex; flex-direction: column; gap: 0.75rem;">
+              <button id="btn-export-resume" class="clay-btn clay-btn-gold" style="width: 100%;">
+                Export Formatted Document (PDF)
+              </button>
+            </div>
+          </div>
+
+          <!-- Editorial Paper Preview -->
+          <div>
+            <div id="resume-paper-content" class="resume-paper"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 6: ATS AUDIT -->
+      <section id="tab-diagnostics" class="tab-view">
+        <div class="grid-2col">
+          <div class="clay-card">
+            <div class="card-header-styled">
+              <h3>Dimensional Readiness Audit</h3>
+              <span class="badge-clay badge-clay-verified">95.4% READINESS</span>
+            </div>
+
+            <div class="metric-row">
+              <div class="metric-header">
+                <span>JD Alignment</span>
+                <strong id="diag-alignment-val">93%</strong>
+              </div>
+              <div class="metric-bar-bg"><div id="diag-alignment-bar" class="metric-bar-fill"></div></div>
+            </div>
+
+            <div class="metric-row">
+              <div class="metric-header">
+                <span>Keyword & Concept Coverage</span>
+                <strong id="diag-keyword-val">90%</strong>
+              </div>
+              <div class="metric-bar-bg"><div id="diag-keyword-bar" class="metric-bar-fill"></div></div>
+            </div>
+
+            <div class="metric-row">
+              <div class="metric-header">
+                <span>Experience Relevance</span>
+                <strong id="diag-experience-val">94%</strong>
+              </div>
+              <div class="metric-bar-bg"><div id="diag-experience-bar" class="metric-bar-fill"></div></div>
+            </div>
+
+            <div class="metric-row">
+              <div class="metric-header">
+                <span>Project Relevance Score</span>
+                <strong id="diag-project-val">96%</strong>
+              </div>
+              <div class="metric-bar-bg"><div id="diag-project-bar" class="metric-bar-fill"></div></div>
+            </div>
+
+            <div class="metric-row">
+              <div class="metric-header">
+                <span>Evidence Confidence & Grounding</span>
+                <strong id="diag-evidence-val">98%</strong>
+              </div>
+              <div class="metric-bar-bg"><div id="diag-evidence-bar" class="metric-bar-fill metric-bar-emerald"></div></div>
+            </div>
+
+            <div class="metric-row">
+              <div class="metric-header">
+                <span>Structure & Layout Quality</span>
+                <strong id="diag-structure-val">99%</strong>
+              </div>
+              <div class="metric-bar-bg"><div id="diag-structure-bar" class="metric-bar-fill metric-bar-emerald"></div></div>
+            </div>
+          </div>
+
+          <div class="clay-card">
+            <div class="card-header-styled">
+              <h3>Grounding Verification Report</h3>
+            </div>
+
+            <div class="alert-box alert-success">
+              <div><strong>Zero Hallucinations:</strong> All 2 included projects trace directly to live GitHub repositories and Kaggle telemetry.</div>
+            </div>
+
+            <div class="alert-box alert-success">
+              <div><strong>Quantified Impact:</strong> 100% of selected bullet points contain measurable metrics (e.g. 34% NDCG gain, 180ms p95 latency).</div>
+            </div>
+
+            <div class="alert-box alert-warning">
+              <div><strong>Cloud Infrastructure:</strong> AWS & Docker are documented in profile history; adding a containerized repo will elevate evidence rating to 100% VERIFIED.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 7: GROWTH VELOCITY & ROADMAP -->
+      <section id="tab-growth" class="tab-view">
+        <div class="grid-2col">
+          <div class="clay-card">
+            <div class="card-header-styled">
+              <h3>Historical Snapshot Telemetry</h3>
+              <span class="badge-clay badge-clay-verified">Q1 vs Q4 2026</span>
+            </div>
+
+            <table style="width:100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+              <thead>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--text-secondary); font-family: var(--font-mono); font-size: 0.74rem;">
+                  <th style="padding: 0.75rem 0;">DIMENSION</th>
+                  <th>JAN 2026</th>
+                  <th>OCT 2026</th>
+                  <th>VELOCITY</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+                  <td style="padding: 0.75rem 0;">Verified Technical Skills</td>
+                  <td>7</td>
+                  <td><strong>15</strong></td>
+                  <td style="color: #34d399; font-family:var(--font-mono); font-weight:700;">+114%</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+                  <td style="padding: 0.75rem 0;">Active GitHub Repos</td>
+                  <td>7</td>
+                  <td><strong>18</strong></td>
+                  <td style="color: #34d399; font-family:var(--font-mono); font-weight:700;">+157%</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+                  <td style="padding: 0.75rem 0;">Kaggle Notebooks</td>
+                  <td>10</td>
+                  <td><strong>34</strong></td>
+                  <td style="color: #34d399; font-family:var(--font-mono); font-weight:700;">+240%</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+                  <td style="padding: 0.75rem 0;">Production AI Projects</td>
+                  <td>1</td>
+                  <td><strong>5</strong></td>
+                  <td style="color: #34d399; font-family:var(--font-mono); font-weight:700;">+400%</td>
+                </tr>
+                <tr>
+                  <td style="padding: 0.75rem 0;">Algorithms Solved</td>
+                  <td>180</td>
+                  <td><strong>520</strong></td>
+                  <td style="color: #34d399; font-family:var(--font-mono); font-weight:700;">+188%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div class="clay-card">
+              <div class="card-header-styled">
+                <h3>Role Readiness Trajectory</h3>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom: 0.35rem;">
+                    <span>Machine Learning Engineer</span>
+                    <strong style="color:#fff; font-family:var(--font-mono);">91% [Ready]</strong>
+                  </div>
+                  <div class="metric-bar-bg"><div class="metric-bar-fill" style="width: 91%;"></div></div>
+                </div>
+                <div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom: 0.35rem;">
+                    <span>AI Engineer (RAG & Agentic Systems)</span>
+                    <strong style="color:var(--accent-gold-light); font-family:var(--font-mono);">88% [Ready]</strong>
+                  </div>
+                  <div class="metric-bar-bg"><div class="metric-bar-fill" style="width: 88%;"></div></div>
+                </div>
+                <div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom: 0.35rem;">
+                    <span>Full Stack AI Engineer</span>
+                    <strong style="color:#60a5fa; font-family:var(--font-mono);">84% [Strong]</strong>
+                  </div>
+                  <div class="metric-bar-bg"><div class="metric-bar-fill" style="width: 84%;"></div></div>
+                </div>
+                <div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom: 0.35rem;">
+                    <span>Data Platform Engineer</span>
+                    <strong style="color:var(--text-secondary); font-family:var(--font-mono);">76% [Moderate]</strong>
+                  </div>
+                  <div class="metric-bar-bg"><div class="metric-bar-fill" style="width: 76%;"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="clay-card">
+              <div class="card-header-styled">
+                <h3>Strategic Upskilling Roadmap</h3>
+                <span class="badge-clay badge-clay-verified">Next Milestones</span>
+              </div>
+
+              <div class="upskill-item">
+                <div style="display:flex; justify-content:space-between; font-weight:700; font-size:0.88rem; margin-bottom:0.25rem;">
+                  <span>Containerized Microservices & CI/CD</span>
+                  <span class="badge-clay badge-clay-supported">Docker + Actions</span>
+                </div>
+                <p style="font-size:0.82rem; color:var(--text-secondary);">Implement automated compose health checks and CI regression suites to reach 96% role benchmark.</p>
+              </div>
+
+              <div class="upskill-item">
+                <div style="display:flex; justify-content:space-between; font-weight:700; font-size:0.88rem; margin-bottom:0.25rem;">
+                  <span>Continuous LLM Grounding & Evals</span>
+                  <span class="badge-clay badge-clay-inferred">MLOps</span>
+                </div>
+                <p style="font-size:0.82rem; color:var(--text-secondary);">Publish automated grounding & NDCG evaluation benchmarks on Kaggle to validate enterprise reliability.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
 
   <script src="js/mock_data.js"></script>
   <script src="js/app.js"></script>

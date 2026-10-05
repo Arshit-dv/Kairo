@@ -1,5 +1,5 @@
 /**
- * Kairo Frontend — Mock Datasets & Offline Demo Engine (Phases 1 & 2)
+ * Kairo Frontend — Mock Datasets & Offline Demo Engine (Phases 1, 2, & 3)
  */
 
 const DEFAULT_PROFILE = {
@@ -30,6 +30,53 @@ const DEFAULT_PROFILE = {
       { name: "Feedback Prize - Evaluating Student Writing", rank: "Top 8% (Bronze Medal)", tier_medal: "Bronze" }
     ]
   },
+  leetcode_profile: {
+    username: "alexchen_dev",
+    ranking: 8420,
+    rating: 2145,
+    tier_badge: "Guardian (Top 1.2%)",
+    total_solved: 520,
+    easy_solved: 160,
+    medium_solved: 280,
+    hard_solved: 80,
+    top_topics: [
+      { topic: "Dynamic Programming", solved: 78 },
+      { topic: "Graph Algorithms & Trees", solved: 94 },
+      { topic: "Heaps & Tries", solved: 86 }
+    ]
+  },
+  codeforces_profile: {
+    handle: "alexchen",
+    current_rating: 1840,
+    max_rating: 1912,
+    rank: "Candidate Master",
+    contests_participated: 38
+  },
+  huggingface_profile: {
+    username: "alexchen-ai",
+    models_count: 2,
+    total_downloads: 24500,
+    featured_models: [
+      { model_id: "alexchen-ai/bge-reranker-hybrid-financial", downloads: 18200, likes: 210, type: "Reranker / Cross-Encoder" },
+      { model_id: "alexchen-ai/rag-guardrail-llama3-8b", downloads: 6300, likes: 85, type: "LLM Guardrail" }
+    ]
+  },
+  verified_certifications: [
+    {
+      name: "AWS Certified Solutions Architect – Associate",
+      issuer: "Amazon Web Services",
+      credential_id: "AWS-SAA-83921049",
+      date: "Nov 2024",
+      skills: ["AWS", "Cloud Architecture", "Docker", "PostgreSQL"]
+    },
+    {
+      name: "DeepLearning.AI Machine Learning Specialization",
+      issuer: "DeepLearning.AI",
+      credential_id: "DLAI-TF-991204",
+      date: "Aug 2024",
+      skills: ["PyTorch", "TensorFlow", "Neural Networks", "NLP"]
+    }
+  ],
   skills: [
     { name: "Python", category: "Programming Languages", level: "Expert", years_experience: 4.0, evidence_status: "VERIFIED", evidence_sources: ["github.com/alexchen-ai/rag-research-assistant"] },
     { name: "FastAPI", category: "Frameworks & AI/ML", level: "Advanced", years_experience: 3.0, evidence_status: "VERIFIED", evidence_sources: ["github.com/alexchen-ai/kairo-api"] },
@@ -37,13 +84,14 @@ const DEFAULT_PROFILE = {
     { name: "RAG", category: "Frameworks & AI/ML", level: "Advanced", years_experience: 2.0, evidence_status: "VERIFIED", evidence_sources: ["github.com/alexchen-ai/rag-research-assistant"] },
     { name: "PostgreSQL", category: "Tools & Cloud Infra", level: "Advanced", years_experience: 3.0, evidence_status: "VERIFIED", evidence_sources: ["github.com/alexchen-ai/fraud-detection-engine"] },
     { name: "pgvector", category: "Tools & Cloud Infra", level: "Intermediate", years_experience: 1.5, evidence_status: "VERIFIED", evidence_sources: ["github.com/alexchen-ai/rag-research-assistant"] },
-    { name: "Docker", category: "Tools & Cloud Infra", level: "Intermediate", years_experience: 2.0, evidence_status: "SUPPORTED", evidence_sources: ["Resume Document"] },
+    { name: "Docker", category: "Tools & Cloud Infra", level: "Advanced", years_experience: 2.5, evidence_status: "VERIFIED", evidence_sources: ["AWS Certified Solutions Architect"] },
     { name: "TypeScript", category: "Programming Languages", level: "Advanced", years_experience: 2.5, evidence_status: "VERIFIED", evidence_sources: ["github.com/alexchen-ai/portfolio-v2"] },
     { name: "Next.js", category: "Frameworks & AI/ML", level: "Advanced", years_experience: 2.0, evidence_status: "VERIFIED", evidence_sources: ["github.com/alexchen-ai/portfolio-v2"] },
-    { name: "AWS", category: "Tools & Cloud Infra", level: "Intermediate", years_experience: 1.5, evidence_status: "SUPPORTED", evidence_sources: ["Resume Document"] },
+    { name: "AWS", category: "Tools & Cloud Infra", level: "Advanced", years_experience: 2.0, evidence_status: "VERIFIED", evidence_sources: ["AWS Certified Solutions Architect (AWS-SAA-83921049)"] },
     { name: "System Design", category: "Core Competencies", level: "Advanced", years_experience: 2.5, evidence_status: "SUPPORTED", evidence_sources: ["Work Experience at Lumina AI"] },
     { name: "LightGBM", category: "Machine Learning & Data Science", level: "Advanced", years_experience: 2.0, evidence_status: "VERIFIED", evidence_sources: ["Kaggle Master Notebooks"] },
-    { name: "Vector Search", category: "Frameworks & AI/ML", level: "Advanced", years_experience: 2.0, evidence_status: "VERIFIED", evidence_sources: ["Kaggle Gold Medal Notebook"] }
+    { name: "Data Structures & Algorithms", category: "Core Computer Science", level: "Expert", years_experience: 3.5, evidence_status: "VERIFIED", evidence_sources: ["LeetCode Guardian (Rating: 2,145 • 520 Solved)", "Codeforces Candidate Master"] },
+    { name: "Model Fine-Tuning & Evaluation", category: "Machine Learning & AI", level: "Expert", years_experience: 2.5, evidence_status: "VERIFIED", evidence_sources: ["Hugging Face @alexchen-ai (24,500 downloads)"] }
   ],
   projects: [
     {

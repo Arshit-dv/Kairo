@@ -1,5 +1,5 @@
 """
-Kairo App - Engine Client (Phases 1 & 2)
+Kairo App - Engine Client (Phases 1, 2, & 3)
 """
 import sys
 import os
@@ -16,7 +16,8 @@ from models.schemas import (
     EvaluationReport,
     CareerKnowledgeGraph,
     GrowthVelocityReport,
-    CareerRecommendation
+    CareerRecommendation,
+    DeveloperIntelligenceReport
 )
 from agents.orchestrator import KairoOrchestrator
 
@@ -50,3 +51,9 @@ class KairoEngineClient:
 
     def get_career_recommendations(self, profile: UnifiedCareerProfile, role: str) -> CareerRecommendation:
         return self.orchestrator.get_career_recommendations(profile, role)
+
+    def ingest_developer_intelligence(self, profile: UnifiedCareerProfile) -> UnifiedCareerProfile:
+        return self.orchestrator.ingest_developer_footprints(profile)
+
+    def get_developer_intelligence_report(self, profile: UnifiedCareerProfile) -> DeveloperIntelligenceReport:
+        return self.orchestrator.get_developer_intelligence_report(profile)
