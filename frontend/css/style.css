@@ -1,6 +1,6 @@
 /* ==========================================================================
    KAIRO — Personal Career Intelligence Engine
-   Design System: Hybrid Claymorphism & Glassmorphism (Dark Mode)
+   Design System: Hybrid Claymorphism & Glassmorphism (Dark Mode) - Phases 1 & 2
    ========================================================================== */
 
 :root {
@@ -24,6 +24,7 @@
   --clay-emerald: linear-gradient(135deg, #10b981, #059669);
   --clay-amber: linear-gradient(135deg, #f59e0b, #d97706);
   --clay-rose: linear-gradient(135deg, #f43f5e, #e11d48);
+  --clay-gold: linear-gradient(135deg, #fbbf24, #d97706);
 
   /* Tactile Clay Shadows (Dual Inset + Drop) */
   --clay-shadow-card: 
@@ -234,7 +235,6 @@ h1, h2, h3, h4, h5, h6 {
   background: rgba(255, 255, 255, 0.05);
 }
 
-/* Active Nav Button with Tactile Clay Depth */
 .nav-btn.active {
   background: var(--clay-primary);
   color: #fff;
@@ -312,7 +312,7 @@ h1, h2, h3, h4, h5, h6 {
 .view-hero p {
   color: var(--text-secondary);
   font-size: 0.98rem;
-  max-width: 800px;
+  max-width: 850px;
 }
 
 /* Grid Layouts */
@@ -437,6 +437,16 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 
     0 4px 10px rgba(225, 29, 72, 0.35),
     inset 1px 1px 2px rgba(255, 255, 255, 0.25),
+    inset -1px -2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.badge-kaggle-master {
+  background: linear-gradient(145deg, #f59e0b, #b45309);
+  color: #fffbeb;
+  font-weight: 800;
+  box-shadow: 
+    0 4px 12px rgba(245, 158, 11, 0.4),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.35),
     inset -1px -2px 3px rgba(0, 0, 0, 0.3);
 }
 
@@ -782,6 +792,81 @@ input[type="checkbox"]:checked::after {
   background: linear-gradient(145deg, rgba(120, 53, 15, 0.7), rgba(69, 26, 3, 0.85));
   border: 1px solid rgba(245, 158, 11, 0.4);
   color: #fef3c7;
+}
+
+/* ==========================================================================
+   Phase 2: Career Knowledge Graph & Upskilling Roadmap Styles
+   ========================================================================== */
+
+.graph-canvas-container {
+  width: 100%;
+  height: 380px;
+  background: #070a13;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--clay-inset-groove);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.graph-node-bubble {
+  position: absolute;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: var(--clay-shadow-pill);
+  cursor: pointer;
+  transition: var(--transition-tactile);
+  user-select: none;
+}
+
+.graph-node-bubble:hover {
+  transform: scale(1.15);
+  z-index: 20;
+}
+
+.node-person {
+  background: var(--clay-primary);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.node-skill {
+  background: linear-gradient(145deg, #0f766e, #042f2e);
+  color: #ccfbf1;
+  border: 1px solid rgba(20, 184, 166, 0.4);
+}
+
+.node-project {
+  background: linear-gradient(145deg, #1e3a8a, #172554);
+  color: #dbeafe;
+  border: 1px solid rgba(59, 130, 246, 0.4);
+}
+
+.node-evidence {
+  background: linear-gradient(145deg, #78350f, #451a03);
+  color: #fef3c7;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+/* Upskilling Roadmap Card */
+.upskill-item {
+  background: linear-gradient(145deg, rgba(20, 28, 48, 0.7), rgba(12, 17, 30, 0.85));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 1.15rem;
+  margin-bottom: 0.85rem;
+  box-shadow: var(--clay-shadow-card);
+  transition: var(--transition-tactile);
+}
+
+.upskill-item:hover {
+  border-color: rgba(99, 102, 241, 0.4);
+  transform: translateY(-2px);
 }
 
 /* Print Styles */

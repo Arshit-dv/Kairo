@@ -1,6 +1,6 @@
 /**
- * Kairo Application Controller
- * Handles Profile Views, JD Analysis, Project Ranking, Tailored Resume Generation & ATS Diagnostics.
+ * Kairo Application Controller (Phases 1 & 2)
+ * Handles Profile Views, Kaggle Footprint, Knowledge Graph Canvas, JD Analysis, Project Ranking, Tailored Resume & Growth Velocity.
  */
 
 // Global State
@@ -15,6 +15,7 @@ let currentEvaluation = null;
 document.addEventListener("DOMContentLoaded", () => {
   setupNavigation();
   renderProfileView();
+  renderKnowledgeGraph();
   populateJDOpts();
   triggerAutoAnalysis();
   setupEventListeners();
@@ -31,6 +32,10 @@ function setupNavigation() {
       document.querySelectorAll(".tab-view").forEach(view => view.classList.remove("active"));
       const activeView = document.getElementById(targetTab);
       if (activeView) activeView.classList.add("active");
+
+      if (targetTab === "tab-graph") {
+        renderKnowledgeGraph();
+      }
     });
   });
 }
@@ -43,6 +48,11 @@ function renderProfileView() {
   document.getElementById("profile-email").textContent = currentProfile.email;
   document.getElementById("profile-github").textContent = currentProfile.github_username;
   document.getElementById("profile-portfolio").textContent = currentProfile.portfolio_url;
+
+  if (currentProfile.kaggle_profile) {
+    document.getElementById("kaggle-username").textContent = `@${currentProfile.kaggle_profile.username}`;
+    document.getElementById("kaggle-tier-badge").textContent = currentProfile.kaggle_profile.tier.toUpperCase();
+  }
 
   // Render Skills
   const skillsContainer = document.getElementById("profile-skills-list");
@@ -79,7 +89,48 @@ function renderProfileView() {
   });
 }
 
-// 2. Job Selection & Matching
+// 2. Interactive Career Knowledge Graph (Phase 2)
+function renderKnowledgeGraph() {
+  const container = document.getElementById("graph-canvas");
+  if (!container) return;
+  container.innerHTML = "";
+
+  // Nodes to plot with relative positions (%)
+  const graphNodes = [
+    { label: "Alex Chen", type: "person", top: "45%", left: "45%" },
+    { label: "Python", type: "skill", top: "25%", left: "30%" },
+    { label: "PyTorch", type: "skill", top: "15%", left: "48%" },
+    { label: "RAG & Agents", type: "skill", top: "22%", left: "65%" },
+    { label: "PostgreSQL / pgvector", type: "skill", top: "68%", left: "28%" },
+    { label: "TypeScript / Next.js", type: "skill", top: "72%", left: "55%" },
+    { label: "LightGBM & GNNs", type: "skill", top: "40%", left: "15%" },
+    
+    { label: "RAG Research Assistant", type: "project", top: "18%", left: "80%" },
+    { label: "Real-Time Fraud Engine", type: "project", top: "58%", left: "12%" },
+    { label: "Modern Dev Portfolio", type: "project", top: "82%", left: "68%" },
+
+    { label: "github.com/rag-assistant", type: "evidence", top: "35%", left: "85%" },
+    { label: "Kaggle Master (Rank #412)", type: "evidence", top: "75%", left: "15%" }
+  ];
+
+  graphNodes.forEach((n, idx) => {
+    const bubble = document.createElement("div");
+    bubble.className = `graph-node-bubble node-${n.type}`;
+    bubble.style.top = n.top;
+    bubble.style.left = n.left;
+    bubble.innerHTML = `<span>${n.type === 'person' ? '👤' : (n.type === 'skill' ? '⚡' : (n.type === 'project' ? '🚀' : '🔗'))}</span> ${n.label}`;
+    
+    bubble.title = `${n.type.toUpperCase()}: ${n.label}`;
+    bubble.addEventListener("click", () => {
+      bubble.style.boxShadow = "0 0 25px rgba(99, 102, 241, 0.9)";
+      setTimeout(() => bubble.style.boxShadow = "", 1200);
+    });
+
+    container.appendChild(bubble);
+  });
+}
+
+// 3. Job Selection & Matching
 function populateJDOpts() {
   const select = document.getElementById("preset-jd-select");
   select.innerHTML = currentJDList.map((jd, idx) => `<option value="${idx}">${jd.company} — ${jd.title}</option>`).join('');
@@ -103,8 +154,7 @@ function triggerAutoAnalysis() {
   const company = document.getElementById("jd-company-input").value;
   const rawText = document.getElementById("jd-text-input").value;
 
-  // Simple client-side parsing & ranking engine
-  const targetKeywords = ["Python", "FastAPI", "PyTorch", "RAG", "pgvector", "PostgreSQL", "Docker", "TypeScript", "React", "Next.js", "AWS", "System Design"];
+  const targetKeywords = ["Python", "FastAPI", "PyTorch", "RAG", "pgvector", "PostgreSQL", "Docker", "TypeScript", "React", "Next.js", "AWS", "System Design", "LightGBM", "Vector Search"];
   const detectedKeywords = targetKeywords.filter(kw => rawText.toLowerCase().includes(kw.toLowerCase()));
 
   // Skill analysis
@@ -134,13 +184,13 @@ function triggerAutoAnalysis() {
       matched_skills: matched,
       bullets: proj.bullets,
       evidence_status: proj.evidence_status,
-      rationale: `Directly matches ${matched.length} target JD skills with verified repository evidence.`
+      rationale: `Directly matches ${matched.length} target JD skills with verified repository & Kaggle evidence.`
     };
   }).sort((a, b) => b.score - a.score);
 
   currentMatchResult = {
-    overall_match_score: Math.min(96, Math.round(70 + (strongMatches.length * 4))),
-    evidence_confidence_score: 97,
+    overall_match_score: Math.min(96, Math.round(72 + (strongMatches.length * 4))),
+    evidence_confidence_score: 98,
     strong_matches: strongMatches,
     partial_matches: partialMatches,
     skill_gaps: skillGaps,
@@ -194,7 +244,7 @@ function renderMatchResults() {
   });
 }
 
-// 3. Tailored Resume Generation
+// 4. Tailored Resume Generation
 function buildTailoredResume() {
   const isOnePage = document.getElementById("constraint-one-page").checked;
   const excludeCodeforces = document.getElementById("constraint-exclude-cp").checked;
@@ -204,7 +254,6 @@ function buildTailoredResume() {
   const title = document.getElementById("jd-title-input").value;
   const company = document.getElementById("jd-company-input").value;
 
-  // Project selection with constraints
   let selected = [...currentMatchResult.ranked_projects];
   if (mustIncludeRag) {
     const ragProj = selected.find(p => p.title.includes("RAG"));
@@ -224,7 +273,7 @@ function buildTailoredResume() {
     summary: `Results-oriented AI Engineer with verified, evidence-backed experience in ${currentMatchResult.strong_matches.slice(0, 3).join(', ')}. Demonstrated capability architecting scalable high-throughput AI microservices aligned with ${company}'s technical requirements.`,
     skills: {
       "Programming Languages": ["Python", "TypeScript", "SQL"],
-      "Frameworks & AI/ML": ["FastAPI", "PyTorch", "RAG", "pgvector", "Next.js"],
+      "Frameworks & AI/ML": ["FastAPI", "PyTorch", "RAG", "pgvector", "LightGBM", "Next.js"],
       "Tools & Infrastructure": ["Docker", "Git", "PostgreSQL", "REST APIs"]
     },
     projects: finalProjects,
@@ -265,7 +314,7 @@ function renderResumePaper() {
         <div class="resume-item">
           <div class="resume-item-header">
             <span>${p.title}</span>
-            <span style="font-size:0.75rem; color:#6366f1; font-weight:normal;">[Score: ${p.score}/100 • Grounded in GitHub]</span>
+            <span style="font-size:0.75rem; color:#6366f1; font-weight:normal;">[Score: ${p.score}/100 • Grounded in GitHub / Kaggle]</span>
           </div>
           <ul class="resume-bullets">
             ${p.bullets.map(b => `<li>${b}</li>`).join('')}
@@ -303,14 +352,14 @@ function renderResumePaper() {
   `;
 }
 
-// 4. ATS & Diagnostics Metrics
+// 5. ATS & Diagnostics Metrics
 function renderDiagnostics() {
   const scores = {
-    jd_alignment: 91,
-    keyword_coverage: 88,
-    experience_relevance: 93,
+    jd_alignment: 93,
+    keyword_coverage: 90,
+    experience_relevance: 94,
     project_relevance: 96,
-    evidence_confidence: 97,
+    evidence_confidence: 98,
     structure_quality: 99
   };
 
@@ -353,6 +402,17 @@ function setupEventListeners() {
       btn.textContent = "✓ Ingested & Verified (3 Repos)";
       btn.style.background = "rgba(16, 185, 129, 0.2)";
       btn.style.color = "#34d399";
+    }, 600);
+  });
+
+  // Sync Kaggle (Phase 2)
+  document.getElementById("btn-sync-kaggle").addEventListener("click", () => {
+    const btn = document.getElementById("btn-sync-kaggle");
+    btn.textContent = "Syncing Kaggle...";
+    setTimeout(() => {
+      btn.textContent = "✓ Synced Master Track (34 Notebooks)";
+      btn.style.background = "rgba(245, 158, 11, 0.25)";
+      btn.style.color = "#fef3c7";
     }, 600);
   });
 

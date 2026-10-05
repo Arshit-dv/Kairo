@@ -1,10 +1,16 @@
 # Kairo App (Public Surface)
 
-The public-facing full-stack product for the **Kairo Career Intelligence Engine**.
+The public-facing full-stack product for the **Kairo Career Intelligence Engine** (Phases 1 & 2).
 
 ## Structure
-- `frontend/`: Interactive Claymorphism + Glassmorphism UI dashboard (Career Profile, JD Matcher, Tailored Resume Studio, ATS Diagnostics, Growth Velocity).
-- `api/`: FastAPI backend with `/profile`, `/jobs`, `/resume`, `/growth` REST routes.
+- `frontend/`: Interactive Claymorphism + Glassmorphism UI dashboard:
+  - Career Profile Hub
+  - **Career Knowledge Graph Visualizer** (Phase 2)
+  - JD Matcher & Project Ranker
+  - Tailored Resume Studio
+  - ATS Diagnostics Breakdown
+  - **Growth Velocity & Upskilling Roadmap** (Phase 2)
+- `api/`: FastAPI backend with `/profile` (with Kaggle sync & graph), `/jobs`, `/resume`, and `/growth` REST routes.
 - `integrations/`: Parsers and external profile connectors.
 
 ## Quickstart

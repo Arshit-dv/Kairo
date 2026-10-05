@@ -1,12 +1,10 @@
 """
-Kairo App - Engine Client
-Abstraction client to communicate with Kairo Intelligence Engine (local Python module or remote service).
+Kairo App - Engine Client (Phases 1 & 2)
 """
 import sys
 import os
 from typing import Dict, Any, Optional
 
-# Add kairo-engine to sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../kairo-engine")))
 
 from models.schemas import (
@@ -15,7 +13,10 @@ from models.schemas import (
     ResumeConstraints,
     JobMatchAnalysis,
     TailoredResume,
-    EvaluationReport
+    EvaluationReport,
+    CareerKnowledgeGraph,
+    GrowthVelocityReport,
+    CareerRecommendation
 )
 from agents.orchestrator import KairoOrchestrator
 
@@ -37,3 +38,15 @@ class KairoEngineClient:
         self, profile: UnifiedCareerProfile, jd: JobDescriptionAnalysis, constraints: ResumeConstraints
     ) -> Dict[str, Any]:
         return self.orchestrator.generate_tailored_resume(profile, jd, constraints)
+
+    def build_knowledge_graph(self, profile: UnifiedCareerProfile) -> CareerKnowledgeGraph:
+        return self.orchestrator.build_career_knowledge_graph(profile)
+
+    def ingest_kaggle(self, profile: UnifiedCareerProfile, username: str) -> UnifiedCareerProfile:
+        return self.orchestrator.ingest_kaggle_footprint(profile, username)
+
+    def get_growth_velocity(self) -> GrowthVelocityReport:
+        return self.orchestrator.analyze_growth_velocity()
+
+    def get_career_recommendations(self, profile: UnifiedCareerProfile, role: str) -> CareerRecommendation:
+        return self.orchestrator.get_career_recommendations(profile, role)

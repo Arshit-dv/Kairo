@@ -1,41 +1,23 @@
 """
-Kairo App - Career Growth API Routes
+Kairo App - Career Growth API Routes (Phases 1 & 2)
 """
 from fastapi import APIRouter
 from typing import Dict, Any, List
+from clients.engine_client import KairoEngineClient
+from routes.profile import get_current_profile
 
 router = APIRouter(prefix="/growth", tags=["Growth"])
+engine_client = KairoEngineClient()
 
-@router.get("/snapshots")
-def get_career_snapshots():
-    """Retrieve historical career snapshots to compare skill & evidence velocity over time."""
-    return {
-        "snapshots": [
-            {
-                "period": "January 2026",
-                "verified_skills": 7,
-                "github_repos": 7,
-                "ml_projects": 1,
-                "cp_problems": 180,
-                "role_readiness_mle": 71
-            },
-            {
-                "period": "October 2026",
-                "verified_skills": 15,
-                "github_repos": 18,
-                "ml_projects": 5,
-                "cp_problems": 520,
-                "role_readiness_mle": 91
-            }
-        ],
-        "top_role_trajectories": [
-            {"role": "Machine Learning Engineer", "readiness": 91, "delta": "+20%"},
-            {"role": "AI Engineer (RAG/Agents)", "readiness": 88, "delta": "+24%"},
-            {"role": "Full Stack AI Engineer", "readiness": 84, "delta": "+12%"},
-            {"role": "Data Engineer", "readiness": 76, "delta": "+8%"}
-        ],
-        "recommended_skill_upskills": [
-            {"skill": "Docker & Container Orchestration", "gap_type": "Moderate", "recommendation": "Deploy a multi-container compose stack with automated health checks."},
-            {"skill": "MLOps / Continuous Evaluation", "gap_type": "High Priority", "recommendation": "Integrate automated grounding benchmarks into GitHub Actions CI pipeline."}
-        ]
-    }
+
+@router.get("/velocity")
+def get_growth_velocity_report():
+    """Phase 2: Retrieve calculated growth velocity report across historical snapshots."""
+    return engine_client.get_growth_velocity()
+
+
+@router.get("/recommendations")
+def get_role_recommendations(target_role: str = "Machine Learning Engineer"):
+    """Phase 2: Generate targeted upskilling recommendations for specific dream roles."""
+    profile = get_current_profile()
+    return engine_client.get_career_recommendations(profile, target_role)

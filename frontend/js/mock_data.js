@@ -1,5 +1,5 @@
 /**
- * Kairo Frontend — Built-in Mock Datasets and Offline Demo Engine
+ * Kairo Frontend — Mock Datasets & Offline Demo Engine (Phases 1 & 2)
  */
 
 const DEFAULT_PROFILE = {
@@ -12,6 +12,24 @@ const DEFAULT_PROFILE = {
   summary: "AI Engineer with 3+ years building high-throughput ML pipelines, LLM-powered RAG systems, and distributed backend services in Python and TypeScript. Proven track record deploying production AI systems with sub-100ms latency and rigorous evaluation suites.",
   github_username: "github.com/alexchen-ai",
   portfolio_url: "https://alexchen.dev",
+  kaggle_profile: {
+    username: "alexchen_ml",
+    tier: "Kaggle Master",
+    rank: 412,
+    total_notebooks: 34,
+    total_datasets: 6,
+    total_competitions: 8,
+    total_upvotes: 520,
+    featured_notebooks: [
+      { title: "Hybrid RAG with Dense Vector Embeddings", upvotes: 142, medal: "Gold", tags: ["NLP", "RAG", "Vector Search"] },
+      { title: "Fraud Anomaly Detection with GNNs", upvotes: 98, medal: "Silver", tags: ["Tabular", "LightGBM", "PyTorch"] },
+      { title: "Optimizing pgvector HNSW Indexing", upvotes: 64, medal: "Bronze", tags: ["PostgreSQL", "pgvector"] }
+    ],
+    competitions: [
+      { name: "IEEE-CIS Fraud Detection Benchmark", rank: "Top 4% (Silver Medal)", tier_medal: "Silver" },
+      { name: "Feedback Prize - Evaluating Student Writing", rank: "Top 8% (Bronze Medal)", tier_medal: "Bronze" }
+    ]
+  },
   skills: [
     { name: "Python", category: "Programming Languages", level: "Expert", years_experience: 4.0, evidence_status: "VERIFIED", evidence_sources: ["github.com/alexchen-ai/rag-research-assistant"] },
     { name: "FastAPI", category: "Frameworks & AI/ML", level: "Advanced", years_experience: 3.0, evidence_status: "VERIFIED", evidence_sources: ["github.com/alexchen-ai/kairo-api"] },
@@ -23,7 +41,9 @@ const DEFAULT_PROFILE = {
     { name: "TypeScript", category: "Programming Languages", level: "Advanced", years_experience: 2.5, evidence_status: "VERIFIED", evidence_sources: ["github.com/alexchen-ai/portfolio-v2"] },
     { name: "Next.js", category: "Frameworks & AI/ML", level: "Advanced", years_experience: 2.0, evidence_status: "VERIFIED", evidence_sources: ["github.com/alexchen-ai/portfolio-v2"] },
     { name: "AWS", category: "Tools & Cloud Infra", level: "Intermediate", years_experience: 1.5, evidence_status: "SUPPORTED", evidence_sources: ["Resume Document"] },
-    { name: "System Design", category: "Core Competencies", level: "Advanced", years_experience: 2.5, evidence_status: "SUPPORTED", evidence_sources: ["Work Experience at Lumina AI"] }
+    { name: "System Design", category: "Core Competencies", level: "Advanced", years_experience: 2.5, evidence_status: "SUPPORTED", evidence_sources: ["Work Experience at Lumina AI"] },
+    { name: "LightGBM", category: "Machine Learning & Data Science", level: "Advanced", years_experience: 2.0, evidence_status: "VERIFIED", evidence_sources: ["Kaggle Master Notebooks"] },
+    { name: "Vector Search", category: "Frameworks & AI/ML", level: "Advanced", years_experience: 2.0, evidence_status: "VERIFIED", evidence_sources: ["Kaggle Gold Medal Notebook"] }
   ],
   projects: [
     {
@@ -45,7 +65,7 @@ const DEFAULT_PROFILE = {
       id: "proj_fraud_engine",
       title: "Real-Time Fraud Detection Engine",
       summary: "Streaming anomaly detection and graph-based fraud scoring processing 12k events/sec.",
-      skills_used: ["Python", "FastAPI", "PostgreSQL", "Docker", "Machine Learning"],
+      skills_used: ["Python", "FastAPI", "PostgreSQL", "Docker", "LightGBM"],
       bullets: [
         "Engineered real-time anomaly detection pipeline handling 12,000 requests/sec with Kafka and FastAPI.",
         "Trained LightGBM and Graph Neural Network models achieving 96.4% AUC-ROC on synthetic financial transactions.",

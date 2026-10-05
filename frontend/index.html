@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kairo — Personal Career Intelligence Engine</title>
-  <meta name="description" content="AI-powered evidence-backed career intelligence, dynamic project ranking, and tailored resume generation with Claymorphic and Glassmorphic UX.">
+  <meta name="description" content="AI-powered evidence-backed career intelligence, dynamic project ranking, knowledge graph, and tailored resume generation with Claymorphic and Glassmorphic UX.">
   
   <!-- Modern Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,7 +26,7 @@
       <div class="brand-logo">K</div>
       <div>
         <span class="brand-title">KAIRO</span>
-        <span class="brand-tag">Career Intelligence</span>
+        <span class="brand-tag">Career Intelligence v2.0</span>
       </div>
     </div>
 
@@ -34,6 +34,9 @@
     <nav class="nav-tabs" aria-label="Main Navigation">
       <button class="nav-btn active" data-tab="tab-profile">
         <span>👤</span> Career Profile
+      </button>
+      <button class="nav-btn" data-tab="tab-graph">
+        <span>🕸️</span> Knowledge Graph
       </button>
       <button class="nav-btn" data-tab="tab-matcher">
         <span>🎯</span> JD Matcher & Ranking
@@ -45,14 +48,14 @@
         <span>📊</span> ATS Diagnostics
       </button>
       <button class="nav-btn" data-tab="tab-growth">
-        <span>📈</span> Growth Velocity
+        <span>📈</span> Growth & Roadmap
       </button>
     </nav>
 
     <div class="header-actions">
       <div class="badge-mode">
         <div class="pulse-dot"></div>
-        <span>Engine Online</span>
+        <span>Intelligence Online</span>
       </div>
     </div>
   </header>
@@ -60,31 +63,55 @@
   <!-- Main Application Container -->
   <main class="main-content">
 
-    <!-- TAB 1: CAREER PROFILE & EVIDENCE HUB -->
+    <!-- TAB 1: CAREER PROFILE & FOOTPRINT HUB -->
     <section id="tab-profile" class="tab-view active">
       <div class="view-hero">
-        <h1>Unified Career Profile & Evidence Hub</h1>
-        <p>A persistent, structured career representation backed by verifiable GitHub code, documents, and technical footprint.</p>
+        <h1>Unified Career Profile & Footprint Hub</h1>
+        <p>A persistent, structured career representation backed by verifiable GitHub code, Kaggle Master achievements, and technical evidence.</p>
       </div>
 
       <div class="grid-1-2">
-        <!-- Profile Identity Card -->
-        <div class="kairo-card">
-          <div class="card-header">
-            <h3>Candidate Identity</h3>
-            <button id="btn-sync-github" class="btn btn-secondary btn-sm">⚡ Sync GitHub</button>
+        <!-- Profile Identity & Ingestion Connectors Card -->
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+          <div class="kairo-card">
+            <div class="card-header">
+              <h3>Candidate Identity</h3>
+              <button id="btn-sync-github" class="btn btn-secondary btn-sm">⚡ Sync GitHub</button>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+              <div>
+                <h2 id="profile-name" style="font-size: 1.45rem; color: #fff;">Alex Chen</h2>
+                <div id="profile-headline" style="color: var(--accent-cyan); font-weight: 600; font-size: 0.95rem; margin-top: 2px;">Full-Stack AI & ML Engineer</div>
+              </div>
+              <p id="profile-summary" style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;"></p>
+              <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.85rem; font-size: 0.85rem; display: flex; flex-direction: column; gap: 0.45rem;">
+                <div>📧 <span id="profile-email" style="color:#cbd5e1;"></span></div>
+                <div>🐙 <span id="profile-github" style="color:#cbd5e1;"></span></div>
+                <div>🌐 <span id="profile-portfolio" style="color:#cbd5e1;"></span></div>
+              </div>
+            </div>
           </div>
-          <div style="display: flex; flex-direction: column; gap: 0.85rem;">
-            <div>
-              <h2 id="profile-name" style="font-size: 1.45rem; color: #fff;">Alex Chen</h2>
-              <div id="profile-headline" style="color: var(--accent-cyan); font-weight: 600; font-size: 0.95rem; margin-top: 2px;">Full-Stack AI & ML Engineer</div>
+
+          <!-- Phase 2: Kaggle Footprint Connector Card -->
+          <div class="kairo-card">
+            <div class="card-header">
+              <h3>Kaggle Footprint</h3>
+              <span id="kaggle-tier-badge" class="badge-evidence badge-kaggle-master">KAGGLE MASTER</span>
             </div>
-            <p id="profile-summary" style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;"></p>
-            <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.85rem; font-size: 0.85rem; display: flex; flex-direction: column; gap: 0.45rem;">
-              <div>📧 <span id="profile-email" style="color:#cbd5e1;"></span></div>
-              <div>🐙 <span id="profile-github" style="color:#cbd5e1;"></span></div>
-              <div>🌐 <span id="profile-portfolio" style="color:#cbd5e1;"></span></div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.85rem;">
+              Verified profile: <strong style="color:#fff;" id="kaggle-username">@alexchen_ml</strong> (Rank #412)
             </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem;">
+              <div class="skill-pill" style="justify-content: space-between;">
+                <span>🥇 Gold Medals:</span> <strong>1</strong>
+              </div>
+              <div class="skill-pill" style="justify-content: space-between;">
+                <span>🥈 Silver Medals:</span> <strong>2</strong>
+              </div>
+            </div>
+            <button id="btn-sync-kaggle" class="btn btn-secondary btn-sm" style="width: 100%;">
+              ⚡ Re-Sync Kaggle ML Evidence
+            </button>
           </div>
         </div>
 
@@ -94,7 +121,7 @@
             <div class="card-header">
               <h3>Evidence-Grounded Skills</h3>
               <div style="display: flex; gap: 0.5rem;">
-                <span class="badge-evidence badge-verified">VERIFIED (10)</span>
+                <span class="badge-evidence badge-verified">VERIFIED (12)</span>
                 <span class="badge-evidence badge-supported">SUPPORTED (3)</span>
               </div>
             </div>
@@ -111,7 +138,40 @@
       </div>
     </section>
 
-    <!-- TAB 2: JD MATCHER & PROJECT RANKING -->
+    <!-- TAB 2: CAREER KNOWLEDGE GRAPH (PHASE 2) -->
+    <section id="tab-graph" class="tab-view">
+      <div class="view-hero">
+        <h1>Career Knowledge Graph Visualizer</h1>
+        <p>Multi-relational graph connecting candidate identity, verified skills, production projects, and platform evidence.</p>
+      </div>
+
+      <div class="grid-2col">
+        <div class="kairo-card" style="grid-column: 1 / -1;">
+          <div class="card-header">
+            <h3>Knowledge Graph Interactive Canvas</h3>
+            <div style="display: flex; gap: 0.75rem; font-size: 0.8rem;">
+              <span class="badge-evidence badge-verified">Skill Depth: 94.2%</span>
+              <span class="badge-evidence badge-supported">Entities: 18</span>
+              <span class="badge-evidence badge-inferred">Relations: 26</span>
+            </div>
+          </div>
+
+          <!-- Interactive Node Canvas -->
+          <div id="graph-canvas" class="graph-canvas-container">
+            <!-- Dynamically populated floating interactive nodes -->
+          </div>
+
+          <div style="display: flex; gap: 1.5rem; justify-content: center; margin-top: 1.25rem; font-size: 0.8rem; color: var(--text-secondary);">
+            <div style="display:flex; align-items:center; gap: 6px;"><div style="width:12px; height:12px; border-radius:50%; background:#6366f1;"></div> Candidate</div>
+            <div style="display:flex; align-items:center; gap: 6px;"><div style="width:12px; height:12px; border-radius:50%; background:#0f766e;"></div> Verified Skills</div>
+            <div style="display:flex; align-items:center; gap: 6px;"><div style="width:12px; height:12px; border-radius:50%; background:#1e3a8a;"></div> Production Projects</div>
+            <div style="display:flex; align-items:center; gap: 6px;"><div style="width:12px; height:12px; border-radius:50%; background:#78350f;"></div> GitHub / Kaggle Evidence</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: JD MATCHER & PROJECT RANKING -->
     <section id="tab-matcher" class="tab-view">
       <div class="view-hero">
         <h1>Job Description Intelligence & Project Ranking</h1>
@@ -195,7 +255,7 @@
       </div>
     </section>
 
-    <!-- TAB 3: TAILORED RESUME STUDIO -->
+    <!-- TAB 4: TAILORED RESUME STUDIO -->
     <section id="tab-resume" class="tab-view">
       <div class="view-hero">
         <h1>Personalized Resume Studio & Constraints</h1>
@@ -252,7 +312,7 @@
       </div>
     </section>
 
-    <!-- TAB 4: ATS & DIAGNOSTICS -->
+    <!-- TAB 5: ATS & DIAGNOSTICS -->
     <section id="tab-diagnostics" class="tab-view">
       <div class="view-hero">
         <h1>Resume Readiness & ATS Intelligence</h1>
@@ -264,13 +324,13 @@
         <div class="kairo-card">
           <div class="card-header">
             <h3>Diagnostic Breakdown</h3>
-            <span class="badge-evidence badge-verified">94.8% Readiness</span>
+            <span class="badge-evidence badge-verified">95.4% Readiness</span>
           </div>
 
           <div class="metric-row">
             <div class="metric-header">
               <span>JD Alignment</span>
-              <strong id="diag-alignment-val">91%</strong>
+              <strong id="diag-alignment-val">93%</strong>
             </div>
             <div class="metric-bar-bg"><div id="diag-alignment-bar" class="metric-bar-fill"></div></div>
           </div>
@@ -278,7 +338,7 @@
           <div class="metric-row">
             <div class="metric-header">
               <span>Keyword & Concept Coverage</span>
-              <strong id="diag-keyword-val">88%</strong>
+              <strong id="diag-keyword-val">90%</strong>
             </div>
             <div class="metric-bar-bg"><div id="diag-keyword-bar" class="metric-bar-fill"></div></div>
           </div>
@@ -286,7 +346,7 @@
           <div class="metric-row">
             <div class="metric-header">
               <span>Experience Relevance</span>
-              <strong id="diag-experience-val">93%</strong>
+              <strong id="diag-experience-val">94%</strong>
             </div>
             <div class="metric-bar-bg"><div id="diag-experience-bar" class="metric-bar-fill"></div></div>
           </div>
@@ -302,7 +362,7 @@
           <div class="metric-row">
             <div class="metric-header">
               <span>Evidence Confidence & Grounding</span>
-              <strong id="diag-evidence-val">97%</strong>
+              <strong id="diag-evidence-val">98%</strong>
             </div>
             <div class="metric-bar-bg"><div id="diag-evidence-bar" class="metric-bar-fill metric-bar-emerald"></div></div>
           </div>
@@ -324,7 +384,7 @@
 
           <div class="alert-box alert-success">
             <span style="font-size:1.1rem;">✓</span>
-            <div><strong>Zero Hallucinations:</strong> All 2 included projects trace directly to live GitHub repositories with verifiable commits.</div>
+            <div><strong>Zero Hallucinations:</strong> All 2 included projects trace directly to live GitHub repositories and Kaggle Master notebooks.</div>
           </div>
 
           <div class="alert-box alert-success">
@@ -340,18 +400,19 @@
       </div>
     </section>
 
-    <!-- TAB 5: CAREER GROWTH -->
+    <!-- TAB 6: CAREER GROWTH & UPSKILLING ROADMAP (PHASE 2) -->
     <section id="tab-growth" class="tab-view">
       <div class="view-hero">
-        <h1>Historical Growth Velocity</h1>
-        <p>Track skill depth, project velocity, and target role readiness over historical snapshots.</p>
+        <h1>Historical Growth Velocity & Upskilling Roadmap</h1>
+        <p>Measure skill acquisition rate, compare snapshots, and generate actionable target role roadmaps.</p>
       </div>
 
       <div class="grid-2col">
+        <!-- Historical Snapshot Comparison -->
         <div class="kairo-card">
           <div class="card-header">
-            <h3>Snapshot Comparison</h3>
-            <span class="badge-evidence badge-verified">January vs October 2026</span>
+            <h3>Historical Snapshot Comparison</h3>
+            <span class="badge-evidence badge-verified">Jan vs Oct 2026</span>
           </div>
 
           <table style="width:100%; border-collapse: collapse; font-size: 0.9rem; text-align: left;">
@@ -377,6 +438,12 @@
                 <td style="color: #34d399; font-weight:700;">+157%</td>
               </tr>
               <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+                <td style="padding: 0.75rem 0;">Kaggle Notebooks</td>
+                <td>10</td>
+                <td><strong>34</strong></td>
+                <td style="color: #34d399; font-weight:700;">+240%</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
                 <td style="padding: 0.75rem 0;">Production AI/ML Projects</td>
                 <td>1</td>
                 <td><strong>5</strong></td>
@@ -392,39 +459,66 @@
           </table>
         </div>
 
-        <div class="kairo-card">
-          <div class="card-header">
-            <h3>Role Readiness Trajectory</h3>
+        <!-- Role Readiness Trajectory & Upskilling Recommendation -->
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+          <div class="kairo-card">
+            <div class="card-header">
+              <h3>Target Role Readiness Trajectory</h3>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+              <div>
+                <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom: 0.35rem;">
+                  <span>Machine Learning Engineer</span>
+                  <strong style="color:#38bdf8;">91% (Ready)</strong>
+                </div>
+                <div class="metric-bar-bg"><div class="metric-bar-fill" style="width: 91%;"></div></div>
+              </div>
+              <div>
+                <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom: 0.35rem;">
+                  <span>AI Engineer (RAG & Agentic Systems)</span>
+                  <strong style="color:#34d399;">88% (Ready)</strong>
+                </div>
+                <div class="metric-bar-bg"><div class="metric-bar-fill metric-bar-emerald" style="width: 88%;"></div></div>
+              </div>
+              <div>
+                <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom: 0.35rem;">
+                  <span>Full Stack AI Engineer</span>
+                  <strong style="color:#fbbf24;">84% (Strong)</strong>
+                </div>
+                <div class="metric-bar-bg"><div class="metric-bar-fill" style="width: 84%; background: linear-gradient(90deg, #f59e0b, #fbbf24);"></div></div>
+              </div>
+              <div>
+                <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom: 0.35rem;">
+                  <span>Data Engineer</span>
+                  <strong style="color:#a5b4fc;">76% (Moderate)</strong>
+                </div>
+                <div class="metric-bar-bg"><div class="metric-bar-fill" style="width: 76%;"></div></div>
+              </div>
+            </div>
           </div>
 
-          <div style="display: flex; flex-direction: column; gap: 1rem;">
-            <div>
-              <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom: 0.35rem;">
-                <span>Machine Learning Engineer</span>
-                <strong style="color:#38bdf8;">91% (Ready)</strong>
-              </div>
-              <div class="metric-bar-bg"><div class="metric-bar-fill" style="width: 91%;"></div></div>
+          <!-- Phase 2 Upskilling Roadmap -->
+          <div class="kairo-card">
+            <div class="card-header">
+              <h3>Actionable Upskilling Recommendations</h3>
+              <span class="badge-evidence badge-verified">Next Milestones</span>
             </div>
-            <div>
-              <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom: 0.35rem;">
-                <span>AI Engineer (RAG & Agentic Systems)</span>
-                <strong style="color:#34d399;">88% (Ready)</strong>
+
+            <div class="upskill-item">
+              <div style="display:flex; justify-content:space-between; font-weight:700; margin-bottom:0.25rem;">
+                <span>Containerized Microservices & CI/CD</span>
+                <span class="badge-evidence badge-supported">Docker + GitHub Actions</span>
               </div>
-              <div class="metric-bar-bg"><div class="metric-bar-fill metric-bar-emerald" style="width: 88%;"></div></div>
+              <p style="font-size:0.82rem; color:var(--text-secondary);">Add automated Docker Compose health checks and CI unit tests to elevate ML Engineer score to 96%.</p>
             </div>
-            <div>
-              <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom: 0.35rem;">
-                <span>Full Stack AI Engineer</span>
-                <strong style="color:#fbbf24;">84% (Strong)</strong>
+
+            <div class="upskill-item">
+              <div style="display:flex; justify-content:space-between; font-weight:700; margin-bottom:0.25rem;">
+                <span>Continuous LLM Grounding & Evals</span>
+                <span class="badge-evidence badge-verified">MLOps Benchmark</span>
               </div>
-              <div class="metric-bar-bg"><div class="metric-bar-fill" style="width: 84%; background: linear-gradient(90deg, #f59e0b, #fbbf24);"></div></div>
-            </div>
-            <div>
-              <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom: 0.35rem;">
-                <span>Data Engineer</span>
-                <strong style="color:#a5b4fc;">76% (Moderate)</strong>
-              </div>
-              <div class="metric-bar-bg"><div class="metric-bar-fill" style="width: 76%;"></div></div>
+              <p style="font-size:0.82rem; color:var(--text-secondary);">Integrate automated citation verification suites on Kaggle or GitHub to prove enterprise reliability.</p>
             </div>
           </div>
         </div>
