@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kairo — Personal Career Intelligence Engine</title>
+  <meta name="description" content="AI-powered evidence-backed career intelligence, dynamic project ranking, and tailored resume generation with Claymorphic and Glassmorphic UX.">
+  
+  <!-- Modern Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Ambient Floating Glow Orbs for Glassmorphism Reflection -->
+  <div class="ambient-glow glow-orb-1"></div>
+  <div class="ambient-glow glow-orb-2"></div>
+  <div class="ambient-glow glow-orb-3"></div>
+
+  <!-- Top Header Navigation -->
+  <header class="app-header">
+    <div class="brand-container">
+      <div class="brand-logo">K</div>
+      <div>
+        <span class="brand-title">KAIRO</span>
+        <span class="brand-tag">Career Intelligence</span>
+      </div>
+    </div>
+
+    <!-- Main Section Tabs -->
+    <nav class="nav-tabs" aria-label="Main Navigation">
+      <button class="nav-btn active" data-tab="tab-profile">
+        <span>👤</span> Career Profile
+      </button>
+      <button class="nav-btn" data-tab="tab-matcher">
+        <span>🎯</span> JD Matcher & Ranking
+      </button>
+      <button class="nav-btn" data-tab="tab-resume">
+        <span>📄</span> Tailored Resume Studio
+      </button>
+      <button class="nav-btn" data-tab="tab-diagnostics">
+        <span>📊</span> ATS Diagnostics
+      </button>
+      <button class="nav-btn" data-tab="tab-growth">
+        <span>📈</span> Growth Velocity
+      </button>
+    </nav>
+
+    <div class="header-actions">
+      <div class="badge-mode">
+        <div class="pulse-dot"></div>
+        <span>Engine Online</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Application Container -->
+  <main class="main-content">
+
+    <!-- TAB 1: CAREER PROFILE & EVIDENCE HUB -->
+    <section id="tab-profile" class="tab-view active">
+      <div class="view-hero">
+        <h1>Unified Career Profile & Evidence Hub</h1>
+        <p>A persistent, structured career representation backed by verifiable GitHub code, documents, and technical footprint.</p>
+      </div>
+
+      <div class="grid-1-2">
+        <!-- Profile Identity Card -->
+        <div class="kairo-card">
+          <div class="card-header">
+            <h3>Candidate Identity</h3>
+            <button id="btn-sync-github" class="btn btn-secondary btn-sm">⚡ Sync GitHub</button>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+            <div>
+              <h2 id="profile-name" style="font-size: 1.45rem; color: #fff;">Alex Chen</h2>
+              <div id="profile-headline" style="color: var(--accent-cyan); font-weight: 600; font-size: 0.95rem; margin-top: 2px;">Full-Stack AI & ML Engineer</div>
+            </div>
+            <p id="profile-summary" style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;"></p>
+            <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.85rem; font-size: 0.85rem; display: flex; flex-direction: column; gap: 0.45rem;">
+              <div>📧 <span id="profile-email" style="color:#cbd5e1;"></span></div>
+              <div>🐙 <span id="profile-github" style="color:#cbd5e1;"></span></div>
+              <div>🌐 <span id="profile-portfolio" style="color:#cbd5e1;"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skills & Grounded Projects -->
+        <div style="display: flex; flex-direction: column; gap: 1.75rem;">
+          <div class="kairo-card">
+            <div class="card-header">
+              <h3>Evidence-Grounded Skills</h3>
+              <div style="display: flex; gap: 0.5rem;">
+                <span class="badge-evidence badge-verified">VERIFIED (10)</span>
+                <span class="badge-evidence badge-supported">SUPPORTED (3)</span>
+              </div>
+            </div>
+            <div id="profile-skills-list" class="skills-cloud"></div>
+          </div>
+
+          <div class="kairo-card">
+            <div class="card-header">
+              <h3>Connected Projects & Footprint</h3>
+            </div>
+            <div id="profile-projects-list" class="project-list"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: JD MATCHER & PROJECT RANKING -->
+    <section id="tab-matcher" class="tab-view">
+      <div class="view-hero">
+        <h1>Job Description Intelligence & Project Ranking</h1>
+        <p>Ingest target job requirements, compute multi-dimensional skill alignment, and rank projects dynamically.</p>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Target JD Ingestion Form -->
+        <div class="kairo-card">
+          <div class="card-header">
+            <h3>Target Opportunity</h3>
+            <span class="badge-evidence badge-supported">Requirement Extractor</span>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="preset-jd-select">Select Sample Preset Opportunity:</label>
+            <select id="preset-jd-select"></select>
+          </div>
+
+          <div class="grid-2col" style="gap: 1rem; margin-bottom: 1.15rem;">
+            <div>
+              <label class="form-label" for="jd-title-input">Role Title</label>
+              <input type="text" id="jd-title-input" class="form-control" value="Machine Learning Engineer">
+            </div>
+            <div>
+              <label class="form-label" for="jd-company-input">Target Company</label>
+              <input type="text" id="jd-company-input" class="form-control" value="Nexus AI Labs">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="jd-text-input">Job Description Text / Requirements</label>
+            <textarea id="jd-text-input" rows="8"></textarea>
+          </div>
+
+          <button id="btn-analyze-jd" class="btn btn-primary" style="width: 100%;">
+            ⚡ Re-Compute Alignment & Rank Projects
+          </button>
+        </div>
+
+        <!-- Computed Match & Project Ranking Results -->
+        <div style="display: flex; flex-direction: column; gap: 1.75rem;">
+          <div class="kairo-card">
+            <div class="card-header">
+              <h3>Match Alignment & Trust Score</h3>
+              <div style="display: flex; gap: 1rem;">
+                <div style="text-align: right;">
+                  <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 600;">JD Match</div>
+                  <div id="overall-match-score" style="font-size: 1.5rem; font-weight: 800; color: #38bdf8;">--</div>
+                </div>
+                <div style="text-align: right;">
+                  <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 600;">Evidence Trust</div>
+                  <div id="evidence-confidence-score" style="font-size: 1.5rem; font-weight: 800; color: #34d399;">--</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-bottom: 1.15rem;">
+              <div style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.5rem;">Directly Verified Skills:</div>
+              <div id="strong-matches-container" class="skills-cloud"></div>
+            </div>
+
+            <div style="margin-bottom: 1.15rem;">
+              <div style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.5rem;">Supported Skills:</div>
+              <div id="partial-matches-container" class="skills-cloud"></div>
+            </div>
+
+            <div>
+              <div style="font-size: 0.82rem; font-weight: 600; color: #fb7185; margin-bottom: 0.5rem;">Identified Competency Gaps:</div>
+              <div id="skill-gaps-container" class="skills-cloud"></div>
+            </div>
+          </div>
+
+          <div class="kairo-card">
+            <div class="card-header">
+              <h3>Dynamically Ranked Candidate Projects</h3>
+            </div>
+            <div id="ranked-projects-list" class="project-list"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: TAILORED RESUME STUDIO -->
+    <section id="tab-resume" class="tab-view">
+      <div class="view-hero">
+        <h1>Personalized Resume Studio & Constraints</h1>
+        <p>Apply exact user constraints and generate an evidence-grounded, 1-page ATS-ready resume.</p>
+      </div>
+
+      <div class="grid-1-2">
+        <!-- Constraint Controls -->
+        <div class="kairo-card" style="height: fit-content;">
+          <div class="card-header">
+            <h3>Resume Constraints</h3>
+            <span class="badge-evidence badge-verified">Rules Applied</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-checkbox-label">
+              <input type="checkbox" id="constraint-one-page" checked>
+              <span>Strict 1-Page Constraint (Top 2 Projects)</span>
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label class="form-checkbox-label">
+              <input type="checkbox" id="constraint-must-rag" checked>
+              <span>Must Include: RAG Research Assistant</span>
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label class="form-checkbox-label">
+              <input type="checkbox" id="constraint-focus-ml" checked>
+              <span>Focus Heavily on Machine Learning & AI</span>
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label class="form-checkbox-label">
+              <input type="checkbox" id="constraint-exclude-cp">
+              <span>Exclude Competitive Programming</span>
+            </label>
+          </div>
+
+          <div style="margin-top: 1.75rem; display: flex; flex-direction: column; gap: 0.75rem;">
+            <button id="btn-export-resume" class="btn btn-primary" style="width: 100%;">
+              🖨️ Export / Print ATS Resume (PDF)
+            </button>
+          </div>
+        </div>
+
+        <!-- Rendered Resume Preview -->
+        <div>
+          <div id="resume-paper-content" class="resume-paper"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: ATS & DIAGNOSTICS -->
+    <section id="tab-diagnostics" class="tab-view">
+      <div class="view-hero">
+        <h1>Resume Readiness & ATS Intelligence</h1>
+        <p>Transparent evaluation across 6 measurable dimensions without vanity scoring.</p>
+      </div>
+
+      <div class="grid-2col">
+        <!-- 6-Dimension Score Cards -->
+        <div class="kairo-card">
+          <div class="card-header">
+            <h3>Diagnostic Breakdown</h3>
+            <span class="badge-evidence badge-verified">94.8% Readiness</span>
+          </div>
+
+          <div class="metric-row">
+            <div class="metric-header">
+              <span>JD Alignment</span>
+              <strong id="diag-alignment-val">91%</strong>
+            </div>
+            <div class="metric-bar-bg"><div id="diag-alignment-bar" class="metric-bar-fill"></div></div>
+          </div>
+
+          <div class="metric-row">
+            <div class="metric-header">
+              <span>Keyword & Concept Coverage</span>
+              <strong id="diag-keyword-val">88%</strong>
+            </div>
+            <div class="metric-bar-bg"><div id="diag-keyword-bar" class="metric-bar-fill"></div></div>
+          </div>
+
+          <div class="metric-row">
+            <div class="metric-header">
+              <span>Experience Relevance</span>
+              <strong id="diag-experience-val">93%</strong>
+            </div>
+            <div class="metric-bar-bg"><div id="diag-experience-bar" class="metric-bar-fill"></div></div>
+          </div>
+
+          <div class="metric-row">
+            <div class="metric-header">
+              <span>Project Relevance Score</span>
+              <strong id="diag-project-val">96%</strong>
+            </div>
+            <div class="metric-bar-bg"><div id="diag-project-bar" class="metric-bar-fill"></div></div>
+          </div>
+
+          <div class="metric-row">
+            <div class="metric-header">
+              <span>Evidence Confidence & Grounding</span>
+              <strong id="diag-evidence-val">97%</strong>
+            </div>
+            <div class="metric-bar-bg"><div id="diag-evidence-bar" class="metric-bar-fill metric-bar-emerald"></div></div>
+          </div>
+
+          <div class="metric-row">
+            <div class="metric-header">
+              <span>Structure & 1-Page Quality</span>
+              <strong id="diag-structure-val">99%</strong>
+            </div>
+            <div class="metric-bar-bg"><div id="diag-structure-bar" class="metric-bar-fill metric-bar-emerald"></div></div>
+          </div>
+        </div>
+
+        <!-- Actionable Alerts & Grounding Trace -->
+        <div class="kairo-card">
+          <div class="card-header">
+            <h3>Actionable Grounding Analysis</h3>
+          </div>
+
+          <div class="alert-box alert-success">
+            <span style="font-size:1.1rem;">✓</span>
+            <div><strong>Zero Hallucinations:</strong> All 2 included projects trace directly to live GitHub repositories with verifiable commits.</div>
+          </div>
+
+          <div class="alert-box alert-success">
+            <span style="font-size:1.1rem;">✓</span>
+            <div><strong>Quantified Impact:</strong> 100% of selected bullet points contain measurable metrics (e.g. 34% NDCG gain, 180ms p95 latency).</div>
+          </div>
+
+          <div class="alert-box alert-warning">
+            <span style="font-size:1.1rem;">⚠️</span>
+            <div><strong>Cloud / Infrastructure Note:</strong> AWS & Docker are supported via resume history; linking a Dockerized repo would elevate evidence rating to 100% VERIFIED.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: CAREER GROWTH -->
+    <section id="tab-growth" class="tab-view">
+      <div class="view-hero">
+        <h1>Historical Growth Velocity</h1>
+        <p>Track skill depth, project velocity, and target role readiness over historical snapshots.</p>
+      </div>
+
+      <div class="grid-2col">
+        <div class="kairo-card">
+          <div class="card-header">
+            <h3>Snapshot Comparison</h3>
+            <span class="badge-evidence badge-verified">January vs October 2026</span>
+          </div>
+
+          <table style="width:100%; border-collapse: collapse; font-size: 0.9rem; text-align: left;">
+            <thead>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.08); color: var(--text-secondary);">
+                <th style="padding: 0.75rem 0;">Dimension</th>
+                <th>Jan 2026</th>
+                <th>Oct 2026</th>
+                <th>Velocity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+                <td style="padding: 0.75rem 0;">Verified Technical Skills</td>
+                <td>7</td>
+                <td><strong>15</strong></td>
+                <td style="color: #34d399; font-weight:700;">+114%</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+                <td style="padding: 0.75rem 0;">GitHub Active Repos</td>
+                <td>7</td>
+                <td><strong>18</strong></td>
+                <td style="color: #34d399; font-weight:700;">+157%</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+                <td style="padding: 0.75rem 0;">Production AI/ML Projects</td>
+                <td>1</td>
+                <td><strong>5</strong></td>
+                <td style="color: #34d399; font-weight:700;">+400%</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem 0;">LeetCode / CP Solved</td>
+                <td>180</td>
+                <td><strong>520</strong></td>
+                <td style="color: #34d399; font-weight:700;">+188%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="kairo-card">
+          <div class="card-header">
+            <h3>Role Readiness Trajectory</h3>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <div>
+              <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom: 0.35rem;">
+                <span>Machine Learning Engineer</span>
+                <strong style="color:#38bdf8;">91% (Ready)</strong>
+              </div>
+              <div class="metric-bar-bg"><div class="metric-bar-fill" style="width: 91%;"></div></div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom: 0.35rem;">
+                <span>AI Engineer (RAG & Agentic Systems)</span>
+                <strong style="color:#34d399;">88% (Ready)</strong>
+              </div>
+              <div class="metric-bar-bg"><div class="metric-bar-fill metric-bar-emerald" style="width: 88%;"></div></div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom: 0.35rem;">
+                <span>Full Stack AI Engineer</span>
+                <strong style="color:#fbbf24;">84% (Strong)</strong>
+              </div>
+              <div class="metric-bar-bg"><div class="metric-bar-fill" style="width: 84%; background: linear-gradient(90deg, #f59e0b, #fbbf24);"></div></div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom: 0.35rem;">
+                <span>Data Engineer</span>
+                <strong style="color:#a5b4fc;">76% (Moderate)</strong>
+              </div>
+              <div class="metric-bar-bg"><div class="metric-bar-fill" style="width: 76%;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/mock_data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
